@@ -1,0 +1,58 @@
+backend:
+  name: github
+  repo: TVUJ-UCET/restaurace-web
+  branch: main
+
+media_folder: public/images/events
+public_folder: /images/events
+
+locale: cs
+
+collections:
+  - name: events
+    label: Akce
+    label_singular: Akce
+    folder: src/content/events
+    create: true
+    extension: md
+    format: frontmatter
+    slug: "{{slug}}"
+
+    fields:
+      - label: Název akce
+        name: title
+        widget: string
+
+      - label: Začátek akce
+        name: startDate
+        widget: datetime
+        date_format: YYYY-MM-DD
+        time_format: false
+        format: YYYY-MM-DD
+
+      - label: Konec akce
+        name: endDate
+        widget: datetime
+        required: false
+        date_format: YYYY-MM-DD
+        time_format: false
+        format: YYYY-MM-DD
+
+      - label: Krátký popis
+        name: description
+        widget: text
+
+      - label: Fotografie
+        name: image
+        widget: image
+        required: false
+
+      - label: Publikováno
+        name: published
+        widget: boolean
+        default: true
+
+      - label: Podrobný text
+        name: body
+        widget: markdown
+        required: false

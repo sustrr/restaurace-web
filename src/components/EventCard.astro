@@ -1,0 +1,52 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  event: CollectionEntry<"events">;
+}
+
+const { event } = Astro.props;
+
+const {
+  title,
+  startDate,
+  endDate,
+  description,
+  image,
+} = event.data;
+
+const formatter = new Intl.DateTimeFormat("cs-CZ", {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+});
+
+const dateLabel = endDate
+  ? `${formatter.format(startDate)} – ${formatter.format(endDate)}`
+  : formatter.format(startDate);
+---
+
+<article class="overflow-hidden rounded-xl border border-gray-200">
+  {image && (
+    <img
+      src={image}
+      alt={title}
+      class="aspect-video w-full object-cover"
+      loading="lazy"
+    />
+  )}
+
+  <div class="p-6">
+    <p class="mb-2 text-sm text-gray-500">
+      {dateLabel}
+    </p>
+
+    <h3 class="mb-3 text-2xl font-semibold">
+      {title}
+    </h3>
+
+    <p class="text-gray-600">
+      {description}
+    </p>
+  </div>
+</article>

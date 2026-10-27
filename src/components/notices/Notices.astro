@@ -9,26 +9,43 @@ const notices = await getCollection(
 );
 ---
 
-<div id="notices" class="notices">
-  {notices.map(({ data }) => (
-    <div
-      class="notice-item"
-      data-visible-from={data.visibleFrom ?? ''}
-      data-visible-until={data.visibleUntil ?? ''}
-      hidden
-    >
-      <NoticePanel notice={data} />
-    </div>
-  ))}
-</div>
+
+{notices.map((notice) => (
+  <div
+    class="notice-item"
+
+    data-visible-from={notice.data.visibleFrom
+      ? new Date(notice.data.visibleFrom).toISOString().slice(0, 10)
+      : ''}
+    data-visible-until={notice.data.visibleUntil
+      ? new Date(notice.data.visibleUntil).toISOString().slice(0, 10)
+      : ''}
+
+    hidden
+  >
+    <NoticePanel notice={notice.data} />
+  </div>
+))}
+
 
 <script>
-  const today = new Intl.DateTimeFormat('en-CA', {
-    timeZone: 'Europe/Prague',
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-  }).format(new Date());
+
+const parts = new Intl.DateTimeFormat('en-GB', {
+  timeZone: 'Europe/Prague',
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit',
+}).formatToParts(new Date());
+
+const getPart = (type: string) =>
+  parts.find((part) => part.type === type)?.value ?? '';
+
+const today = [
+  getPart('year'),
+  getPart('month'),
+  getPart('day'),
+].join('-');
+
 
   document.querySelectorAll<HTMLElement>('.notice-item').forEach((item) => {
     const from = item.dataset.visibleFrom;

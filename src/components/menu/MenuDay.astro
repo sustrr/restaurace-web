@@ -2,7 +2,8 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 
-type MenuDay = CollectionEntry<'weeklyMenu'>['data']['days'][number];
+type MenuDay =
+  CollectionEntry<'weeklyMenu'>['data']['days'][number];
 
 interface Props {
   day: MenuDay;
@@ -20,24 +21,36 @@ const dayNames = {
 ---
 
 <article class="menu-day">
-  <h3>{dayNames[day.day]}</h3>
+  <h4 class="menu-day__title">
+    {dayNames[day.day]}
+  </h4>
 
   {day.closed ? (
-    <p>Zavřeno</p>
+    <p class="menu-day__closed">Zavřeno</p>
   ) : (
     <>
       {day.soup && (
-        <p class="menu-soup">{day.soup}</p>
+        <p class="menu-day__soup">{day.soup}</p>
       )}
 
-      <ul class="menu-meals">
+      <ul class="menu-day__meals">
         {day.meals.map((meal) => (
-          <li>
-            <span>{meal.name}</span>
-            <span>{meal.price} Kč</span>
-            {meal.allergens && (
-              <small>Alergeny: {meal.allergens}</small>
-            )}
+          <li class="menu-day__meal">
+            <div class="menu-day__meal-info">
+              <span class="menu-day__meal-name">
+                {meal.name}
+              </span>
+
+              {meal.allergens && (
+                <small class="menu-day__allergens">
+                  Alergeny: {meal.allergens}
+                </small>
+              )}
+            </div>
+
+            <span class="menu-day__price">
+              {meal.price} Kč
+            </span>
           </li>
         ))}
       </ul>

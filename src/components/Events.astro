@@ -13,49 +13,99 @@ events.sort(
     a.data.startDate.getTime() -
     b.data.startDate.getTime()
 );
+
+const toDateString = (value?: Date) =>
+  value ? value.toISOString().slice(0, 10) : '';
 ---
 
 <section id="events" class="events" hidden>
-  <h2>Akce a speciální nabídky</h2>
+  <div class="container">
+    <div class="events__header">
+      <p class="events__eyebrow">Nenechte si ujít</p>
+      <h2>Akce a speciální nabídky</h2>
+    </div>
 
-  <div class="events-list">
-    {events.map((event) => (
-      <div
-        class="event-item"
-        data-visible-from={event.data.visibleFrom?.toISOString().slice(0, 10) ?? ''}
-        data-visible-until={event.data.visibleUntil?.toISOString().slice(0, 10) ?? ''}
-        hidden
-      >
-        <EventCard event={event} />
-      </div>
-    ))}
+    <div class="events-list">
+      {events.map((event) => (
+        <div
+          class="event-item"
+          data-visible-from={toDateString(event.data.visibleFrom)}
+          data-visible-until={toDateString(event.data.visibleUntil)}
+          data-end-date={toDateString(
+            event.data.endDate ?? event.data.startDate
+          )}
+          hidden
+        >
+          <div class="event-item__featured">
+            <EventCard event={event} variant="featured" />
+          </div>
+
+          <div class="event-item__compact" hidden>
+            <EventCard event={event} variant="compact" />
+          </div>
+        </div>
+      ))}
+    </div>
   </div>
 </section>
 
 <script>
-  const today = new Intl.DateTimeFormat('en-CA', {
-    timeZone: 'Europe/Prague',
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-  }).format(new Date());
+  function getPragueToday(): string {
+    const parts = new Intl.DateTimeFormat('en-GB', {
+      timeZone: 'Europe/Prague',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+    }).formatToParts(new Date());
 
-  document.querySelectorAll<HTMLElement>('.event-item').forEach((item) => {
+    const getPart = (type: string) =>
+      parts.find((part) => part.type === type)?.value ?? '';
+
+    return [
+      getPart('year'),
+      getPart('month'),
+      getPart('day'),
+    ].join('-');
+  }
+
+  const today = getPragueToday();
+
+  const items = Array.from(
+    document.querySelectorAll<HTMLElement>('.event-item')
+  );
+
+  const visibleItems = items.filter((item) => {
     const from = item.dataset.visibleFrom;
     const until = item.dataset.visibleUntil;
+    const endDate = item.dataset.endDate;
 
-    const isVisible =
+    return (
       (!from || today >= from) &&
-      (!until || today <= until);
+      (!until || today <= until) &&
+      (!endDate || today <= endDate)
+    );
+  });
 
-    item.hidden = !isVisible;
+  visibleItems.forEach((item, index) => {
+    const featured = item.querySelector<HTMLElement>(
+      '.event-item__featured'
+    );
+
+    const compact = item.querySelector<HTMLElement>(
+      '.event-item__compact'
+    );
+
+    const isFeatured = index === 0;
+
+    if (featured) featured.hidden = !isFeatured;
+    if (compact) compact.hidden = isFeatured;
+
+    item.hidden = false;
   });
 
   const section = document.querySelector<HTMLElement>('#events');
 
   if (section) {
-    section.hidden = !section.querySelector(
-      '.event-item:not([hidden])'
-    );
+    section.hidden = visibleItems.length === 0;
   }
 </script>

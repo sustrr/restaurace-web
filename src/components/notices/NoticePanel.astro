@@ -2,39 +2,31 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 
-type Notice = CollectionEntry<'notices'>['data'];
-
 interface Props {
-  notice: Notice;
+  notice: CollectionEntry<'notices'>['data'];
 }
 
 const { notice } = Astro.props;
 
-const heading =
-  notice.type === 'closed'
-    ? 'Zavřeno'
-    : 'Uzavřená společnost';
-
-const formatDate = (date: string) =>
-  new Intl.DateTimeFormat('cs-CZ', {
-    day: 'numeric',
-    month: 'numeric',
-    year: 'numeric',
-    timeZone: 'UTC',
-  }).format(new Date(`${date}T12:00:00Z`));
+const isClosed = notice.type === 'closed';
+const label = isClosed ? 'Zavřeno' : 'Uzavřená společnost';
 ---
 
-<article class="notice-panel" data-type={notice.type}>
-  <h3>{heading}</h3>
+<div
+  class:list={[
+    'notice-panel',
+    {
+      'notice-panel--closed': isClosed,
+      'notice-panel--private': !isClosed,
+    },
+  ]}
+  role="status"
+>
+  <div class="container notice-panel__inner">
+    <span class="notice-panel__label">{label}</span>
 
-  <p class="notice-date">
-    {formatDate(notice.startDate)}
-    {notice.endDate &&
-      notice.endDate !== notice.startDate &&
-      ` – ${formatDate(notice.endDate)}`}
-  </p>
-
-  {notice.reason && (
-    <p class="notice-reason">{notice.reason}</p>
-  )}
-</article>
+    <span class="notice-panel__message">
+      {notice.reason || notice.title}
+    </span>
+  </div>
+</div>

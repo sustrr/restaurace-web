@@ -13,52 +13,235 @@ const menuData = menus.map(({ data }) => ({
   weekStart: data.weekStart,
   days: data.days,
 }));
+
+const weekdays = [
+  { key: 'monday', label: 'Po' },
+  { key: 'tuesday', label: 'Út' },
+  { key: 'wednesday', label: 'St' },
+  { key: 'thursday', label: 'Čt' },
+  { key: 'friday', label: 'Pá' },
+];
 ---
 
 <section id="weekly-menu" class="weekly-menu">
-  <h2>Polední menu</h2>
+  <div class="container weekly-menu__layout">
+    <div class="weekly-menu__intro">
+      <p class="weekly-menu__eyebrow">
+        Naše nabídka
+      </p>
 
-  <div id="weekly-menu-content">
-    <p>Načítám aktuální menu…</p>
+      <h2>Polední menu</h2>
+
+      <p class="weekly-menu__description">
+        Každý všední den pro vás připravujeme
+        nabídku poledních jídel.
+      </p>
+    </div>
+
+    <div class="weekly-menu__main">
+      <div id="weekly-menu-content">
+        <p>Načítám aktuální menu…</p>
+      </div>
+    </div>
   </div>
 
   <div id="weekly-menu-data" hidden>
     {menuData.map((menu) => (
       <section data-week-start={menu.weekStart}>
-        <h3>{menu.title}</h3>
-        {menu.days.map((day) => (
-          <MenuDay day={day} />
-        ))}
+        <h3 class="weekly-menu__week-title">
+          {menu.title}
+        </h3>
+
+        <div class="weekly-menu__tabs" role="tablist" aria-label="Den v týdnu">
+          {weekdays.map(({ key, label }) => (
+            <button
+              type="button"
+              class="weekly-menu__tab"
+              role="tab"
+              data-day={key}
+              aria-selected="false"
+              tabindex="-1"
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+
+        <div class="weekly-menu__panels">
+          {menu.days.map((day) => (
+            <div
+              class="weekly-menu__day"
+              data-day={day.day}
+              role="tabpanel"
+              hidden
+            >
+              <MenuDay day={day} />
+            </div>
+          ))}
+        </div>
       </section>
     ))}
   </div>
 </section>
 
 <script>
-  function getMonday(date: Date): string {
-    const d = new Date(date);
-    const weekday = (d.getDay() + 6) % 7;
-    d.setDate(d.getDate() - weekday);
+  const dayKeys = [
+    'monday',
+    'tuesday',
+    'wednesday',
+    'thursday',
+    'friday',
+  ];
 
-    const year = d.getFullYear();
-    const month = String(d.getMonth() + 1).padStart(2, '0');
-    const day = String(d.getDate()).padStart(2, '0');
+  function getPragueDate() {
+    const parts = new Intl.DateTimeFormat('en-GB', {
+      timeZone: 'Europe/Prague',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      weekday: 'long',
+    }).formatToParts(new Date());
 
-    return `${year}-${month}-${day}`;
+    const getPart = (type: string) =>
+      parts.find((part) => part.type === type)?.value ?? '';
+
+    const dateString = [
+      getPart('year'),
+      getPart('month'),
+      getPart('day'),
+    ].join('-');
+
+    return {
+      dateString,
+      weekday: getPart('weekday').toLowerCase(),
+    };
   }
 
-  const currentWeek = getMonday(new Date());
-  const container = document.querySelector('#weekly-menu-content');
-  const source = document.querySelector(
-    `[data-week-start="${currentWeek}"]`
+  function getMonday(dateString: string): string {
+    const date = new Date(`${dateString}T12:00:00Z`);
+    const weekday = (date.getUTCDay() + 6) % 7;
+
+    date.setUTCDate(date.getUTCDate() - weekday);
+
+    return date.toISOString().slice(0, 10);
+  }
+
+
+const { dateString, weekday } = getPragueDate();
+
+function getDisplayWeek(
+  dateString: string,
+  weekday: string
+): string {
+  const monday = getMonday(dateString);
+
+  if (weekday === 'saturday' || weekday === 'sunday') {
+    const nextMonday = new Date(`${monday}T12:00:00Z`);
+    nextMonday.setUTCDate(nextMonday.getUTCDate() + 7);
+
+    return nextMonday.toISOString().slice(0, 10);
+  }
+
+  return monday;
+}
+
+const currentWeek = getDisplayWeek(dateString, weekday);
+
+
+  const container = document.querySelector<HTMLElement>(
+    '#weekly-menu-content'
+  );
+
+  const source = document.querySelector<HTMLElement>(
+    `#weekly-menu-data [data-week-start="${currentWeek}"]`
   );
 
   if (container) {
-    if (source) {
-      container.replaceChildren(source.cloneNode(true));
-    } else {
-      container.textContent =
-        'Polední menu pro tento týden zatím není zveřejněno.';
+
+
+  if (!source) {
+    const isWeekend =
+      weekday === 'saturday' ||
+      weekday === 'sunday';
+
+    container.textContent = isWeekend
+      ? 'Polední menu na příští týden zatím není zveřejněno.'
+      : 'Polední menu pro tento týden zatím není zveřejněno.';
+  } else {
+      const menu = source.cloneNode(true) as HTMLElement;
+      container.replaceChildren(menu);
+
+      const tabs = Array.from(
+        menu.querySelectorAll<HTMLButtonElement>('[role="tab"]')
+      );
+
+      const panels = Array.from(
+        menu.querySelectorAll<HTMLElement>('[role="tabpanel"]')
+      );
+
+      function selectDay(day: string) {
+        tabs.forEach((tab) => {
+          const active = tab.dataset.day === day;
+
+          tab.setAttribute('aria-selected', String(active));
+          tab.tabIndex = active ? 0 : -1;
+          tab.classList.toggle('is-active', active);
+        });
+
+        panels.forEach((panel) => {
+          panel.hidden = panel.dataset.day !== day;
+        });
+      }
+
+      tabs.forEach((tab) => {
+        tab.addEventListener('click', () => {
+          selectDay(tab.dataset.day ?? 'monday');
+        });
+
+        tab.addEventListener('keydown', (event) => {
+          if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) {
+            return;
+          }
+
+          event.preventDefault();
+
+          const index = tabs.indexOf(tab);
+          let nextIndex = index;
+
+          if (event.key === 'ArrowRight') {
+            nextIndex = (index + 1) % tabs.length;
+          } else if (event.key === 'ArrowLeft') {
+            nextIndex = (index - 1 + tabs.length) % tabs.length;
+          } else if (event.key === 'Home') {
+            nextIndex = 0;
+          } else if (event.key === 'End') {
+            nextIndex = tabs.length - 1;
+          }
+
+          const nextTab = tabs[nextIndex];
+          selectDay(nextTab.dataset.day ?? 'monday');
+          nextTab.focus();
+        });
+      });
+
+      const availableDays = panels.map((panel) => panel.dataset.day);
+      const initialDay = availableDays.includes(weekday)
+        ? weekday
+        : availableDays.includes('monday')
+          ? 'monday'
+          : availableDays[0];
+
+      if (initialDay) {
+        selectDay(initialDay);
+      } else {
+        tabs.forEach((tab) => {
+          tab.disabled = true;
+          tab.tabIndex = -1;
+        });
+
+        menu.querySelector('.weekly-menu__panels')!.textContent =
+          'Pro tento týden nejsou vyplněné žádné dny.';
+      }
     }
   }
 </script>

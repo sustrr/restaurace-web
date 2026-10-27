@@ -38,19 +38,14 @@ collections:
         time_format: false
         format: YYYY-MM-DD
 
-      - label: Krátký popis
-        name: description
-        widget: text
-
-      - label: Fotografie
-        name: image
-        widget: image
-        required: false
-
       - label: Publikováno
         name: published
         widget: boolean
         default: true
+
+      - label: Krátký popis
+        name: description
+        widget: text
 
       - label: Podrobný text
         name: body
@@ -72,6 +67,11 @@ collections:
         date_format: YYYY-MM-DD
         time_format: false
         format: YYYY-MM-DD
+
+      - label: Fotografie
+        name: image
+        widget: image
+        required: false
 
   - name: weekly-menu
     label: Polední menu

@@ -1,0 +1,63 @@
+
+{
+  "title": "Polední menu 2.–6. listopadu 2026",
+  "weekStart": "2026-11-02",
+  "published": true,
+  "days": [
+    {
+      "day": "monday",
+      "closed": false,
+      "soup": "Hovězí vývar s nudlemi",
+      "meals": [
+        {
+          "name": "Svíčková na smetaně, houskový knedlík",
+          "price": 169,
+          "allergens": "1, 7, 9"
+        },
+        {
+          "name": "Smažený sýr, hranolky, tatarská omáčka",
+          "price": 155,
+          "allergens": "1, 3, 7"
+        }
+      ]
+    },
+    {
+      "day": "tuesday",
+      "closed": false,
+      "soup": "Česnečka se sýrem",
+      "meals": [
+        {
+          "name": "Vepřový řízek, bramborový salát",
+          "price": 165
+        }
+      ]
+    },
+    {
+      "day": "wednesday",
+      "closed": true,
+      "meals": []
+    },
+    {
+      "day": "thursday",
+      "closed": false,
+      "soup": "Bramboračka",
+      "meals": [
+        {
+          "name": "Hovězí guláš, houskový knedlík",
+          "price": 169
+        }
+      ]
+    },
+    {
+      "day": "friday",
+      "closed": false,
+      "soup": "Kulajda",
+      "meals": [
+        {
+          "name": "Pečené kuře, bramborová kaše",
+          "price": 159
+        }
+      ]
+    }
+  ]
+}

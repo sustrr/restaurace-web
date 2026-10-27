@@ -1,0 +1,64 @@
+
+---
+import { getCollection } from 'astro:content';
+import MenuDay from './MenuDay.astro';
+
+const menus = await getCollection(
+  'weeklyMenu',
+  ({ data }) => data.published
+);
+
+const menuData = menus.map(({ data }) => ({
+  title: data.title,
+  weekStart: data.weekStart,
+  days: data.days,
+}));
+---
+
+<section id="weekly-menu" class="weekly-menu">
+  <h2>Polední menu</h2>
+
+  <div id="weekly-menu-content">
+    <p>Načítám aktuální menu…</p>
+  </div>
+
+  <div id="weekly-menu-data" hidden>
+    {menuData.map((menu) => (
+      <section data-week-start={menu.weekStart}>
+        <h3>{menu.title}</h3>
+        {menu.days.map((day) => (
+          <MenuDay day={day} />
+        ))}
+      </section>
+    ))}
+  </div>
+</section>
+
+<script>
+  function getMonday(date: Date): string {
+    const d = new Date(date);
+    const weekday = (d.getDay() + 6) % 7;
+    d.setDate(d.getDate() - weekday);
+
+    const year = d.getFullYear();
+    const month = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+
+    return `${year}-${month}-${day}`;
+  }
+
+  const currentWeek = getMonday(new Date());
+  const container = document.querySelector('#weekly-menu-content');
+  const source = document.querySelector(
+    `[data-week-start="${currentWeek}"]`
+  );
+
+  if (container) {
+    if (source) {
+      container.replaceChildren(source.cloneNode(true));
+    } else {
+      container.textContent =
+        'Polední menu pro tento týden zatím není zveřejněno.';
+    }
+  }
+</script>

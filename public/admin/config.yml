@@ -56,3 +56,180 @@ collections:
         name: body
         widget: markdown
         required: false
+
+      - label: Zobrazovat od
+        name: visibleFrom
+        widget: datetime
+        required: false
+        date_format: YYYY-MM-DD
+        time_format: false
+        format: YYYY-MM-DD
+
+      - label: Zobrazovat do
+        name: visibleUntil
+        widget: datetime
+        required: false
+        date_format: YYYY-MM-DD
+        time_format: false
+        format: YYYY-MM-DD
+
+  - name: weekly-menu
+    label: Polední menu
+    label_singular: Týdenní menu
+    folder: src/content/weekly-menu
+    create: true
+    extension: json
+    format: json
+    slug: "{{fields.weekStart}}"
+    identifier_field: title
+
+    fields:
+      - label: Název týdne
+        name: title
+        widget: string
+
+      - label: Pondělí daného týdne
+        name: weekStart
+        widget: datetime
+        date_format: YYYY-MM-DD
+        time_format: false
+        format: YYYY-MM-DD
+
+      - label: Publikováno
+        name: published
+        widget: boolean
+        default: false
+
+      - label: Jednotlivé dny
+        name: days
+        widget: list
+        summary: "{{fields.day}}"
+        fields:
+          - label: Den
+            name: day
+            widget: select
+            options:
+              - { label: Pondělí, value: monday }
+              - { label: Úterý, value: tuesday }
+              - { label: Středa, value: wednesday }
+              - { label: Čtvrtek, value: thursday }
+              - { label: Pátek, value: friday }
+
+          - label: Zavřeno
+            name: closed
+            widget: boolean
+            default: false
+
+          - label: Polévka
+            name: soup
+            widget: string
+            required: false
+
+          - label: Hlavní jídla
+            name: meals
+            widget: list
+            required: false
+            summary: "{{fields.name}}"
+            fields:
+              - { label: Název jídla, name: name, widget: string }
+              - { label: Cena v Kč, name: price, widget: number, value_type: int, min: 0 }
+              - { label: Alergeny, name: allergens, widget: string, required: false }
+
+
+  - name: notices
+    label: Provozní oznámení
+    label_singular: Oznámení
+    folder: src/content/notices
+    create: true
+    extension: json
+    format: json
+    slug: "{{slug}}"
+    identifier_field: title
+
+    fields:
+      - label: Interní název
+        name: title
+        widget: string
+
+      - label: Typ oznámení
+        name: type
+        widget: select
+        options:
+          - { label: Zavřeno, value: closed }
+          - { label: Uzavřená společnost, value: private-event }
+
+      - label: Datum začátku omezení
+        name: startDate
+        widget: datetime
+        date_format: YYYY-MM-DD
+        time_format: false
+        format: YYYY-MM-DD
+
+      - label: Datum konce omezení
+        name: endDate
+        widget: datetime
+        required: false
+        date_format: YYYY-MM-DD
+        time_format: false
+        format: YYYY-MM-DD
+
+      - label: Důvod / doplňující informace
+        name: reason
+        widget: text
+        required: false
+
+      - label: Zobrazovat od
+        name: visibleFrom
+        widget: datetime
+        required: false
+        date_format: YYYY-MM-DD
+        time_format: false
+        format: YYYY-MM-DD
+
+      - label: Zobrazovat do
+        name: visibleUntil
+        widget: datetime
+        required: false
+        date_format: YYYY-MM-DD
+        time_format: false
+        format: YYYY-MM-DD
+
+      - label: Publikováno
+        name: published
+        widget: boolean
+        default: false
+
+  - name: services
+    label: Pořádané akce
+    label_singular: Typ akce
+    folder: src/content/services
+    create: true
+    extension: json
+    format: json
+    slug: "{{slug}}"
+    identifier_field: title
+
+    fields:
+      - label: Název
+        name: title
+        widget: string
+
+      - label: Popis
+        name: description
+        widget: text
+
+      - label: Fotografie
+        name: image
+        widget: image
+        required: false
+
+      - label: Pořadí
+        name: order
+        widget: number
+        value_type: int
+        default: 0
+
+      - label: Publikováno
+        name: published
+        widget: boolean
+        default: true

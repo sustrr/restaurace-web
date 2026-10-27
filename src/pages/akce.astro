@@ -1,0 +1,41 @@
+
+---
+import { getCollection } from 'astro:content';
+import ServiceCard from '../components/services/ServiceCard.astro';
+
+const services = await getCollection(
+  'services',
+  ({ data }) => data.published
+);
+
+services.sort((a, b) =>
+  a.data.order - b.data.order
+);
+---
+
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="Pořádáme svatby, firemní večírky, narozeninové oslavy a další společenské akce."
+    />
+    <title>Pořádané akce</title>
+  </head>
+
+  <body>
+    <main>
+      <h1>Pořádané akce</h1>
+
+      {services.length > 0 ? (
+        <div class="services-list">
+          {services.map(({ data }) => (
+            <ServiceCard service={data} />
+          ))}
+        </div>
+      ) : (
+        <p>Informace o pořádaných akcích připravujeme.</p>
+      )}
+    </main>
+  </body>
+</html>

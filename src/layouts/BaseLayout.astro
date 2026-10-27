@@ -1,5 +1,10 @@
+
 ---
-import "../styles/global.css";
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+// Ponech zde své existující importy fontů.
 
 interface Props {
   title?: string;
@@ -7,8 +12,8 @@ interface Props {
 }
 
 const {
-  title = "Restaurace",
-  description = "Vítejte v naší restauraci.",
+  title = 'Restaurace Křižanov',
+  description = 'Poctivá kuchyně a příjemné posezení v Křižanově.',
 } = Astro.props;
 ---
 
@@ -23,7 +28,14 @@ const {
     <meta name="description" content={description} />
     <title>{title}</title>
   </head>
+
   <body>
-    <slot />
+    <Header />
+
+    <main id="main-content">
+      <slot />
+    </main>
+
+    <Footer />
   </body>
 </html>

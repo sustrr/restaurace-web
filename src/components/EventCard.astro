@@ -1,11 +1,13 @@
+
 ---
-import type { CollectionEntry } from "astro:content";
+import type { CollectionEntry } from 'astro:content';
 
 interface Props {
-  event: CollectionEntry<"events">;
+  event: CollectionEntry<'events'>;
+  variant?: 'featured' | 'compact';
 }
 
-const { event } = Astro.props;
+const { event, variant = 'featured' } = Astro.props;
 
 const {
   title,
@@ -15,10 +17,11 @@ const {
   image,
 } = event.data;
 
-const formatter = new Intl.DateTimeFormat("cs-CZ", {
-  day: "numeric",
-  month: "long",
-  year: "numeric",
+const formatter = new Intl.DateTimeFormat('cs-CZ', {
+  timeZone: 'Europe/Prague',
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
 });
 
 const dateLabel = endDate
@@ -26,27 +29,49 @@ const dateLabel = endDate
   : formatter.format(startDate);
 ---
 
-<article class="overflow-hidden rounded-xl border border-gray-200">
-  {image && (
-    <img
-      src={image}
-      alt={title}
-      class="aspect-video w-full object-cover"
-      loading="lazy"
-    />
-  )}
+{variant === 'featured' ? (
+  <article class="event-card event-card--featured">
+    <div class="event-card__media">
+      {image && (
+        <img
+          src={image}
+          alt={title}
+          class="event-card__image"
+          loading="lazy"
+        />
+      )}
+    </div>
 
-  <div class="p-6">
-    <p class="mb-2 text-sm text-gray-500">
-      {dateLabel}
-    </p>
+    <div class="event-card__content">
+      <p class="event-card__eyebrow">Sezónní nabídka</p>
+      <p class="event-card__date">{dateLabel}</p>
 
-    <h3 class="mb-3 text-2xl font-semibold">
-      {title}
-    </h3>
+      <h3 class="event-card__title">{title}</h3>
 
-    <p class="text-gray-600">
-      {description}
-    </p>
-  </div>
-</article>
+      <p class="event-card__description">{description}</p>
+
+      <a href="/rezervace/" class="event-card__button">
+        Rezervovat stůl
+      </a>
+    </div>
+  </article>
+) : (
+  <article class="event-card-compact">
+    <div class="event-card-compact__content">
+      <p class="event-card-compact__date">{dateLabel}</p>
+
+      <h3 class="event-card-compact__title">{title}</h3>
+
+      <p class="event-card-compact__description">{description}</p>
+    </div>
+
+    <a
+      href="/rezervace/"
+      class="event-card-compact__link"
+      aria-label={`Rezervovat stůl – ${title}`}
+    >
+      Rezervovat stůl
+      <span aria-hidden="true">↗</span>
+    </a>
+  </article>
+)}

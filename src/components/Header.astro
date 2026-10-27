@@ -1,0 +1,38 @@
+
+---
+const navigation = [
+  { label: 'Domů', href: '/' },
+  { label: 'Jídelní lístek', href: '/jidelni-listek/' },
+  { label: 'Služby', href: '/akce/' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="site-brand" href="/" aria-label="Restaurace Křižanov – úvodní stránka">
+      <span class="site-brand__symbol" aria-hidden="true">✳</span>
+      <span class="site-brand__name">Restaurace Křižanov</span>
+    </a>
+
+    <nav class="site-nav" aria-label="Hlavní navigace">
+      {navigation.map((item) => (
+        <a
+          href={item.href}
+          class:list={[
+            'site-nav__link',
+            { 'is-active': currentPath === item.href },
+          ]}
+          aria-current={currentPath === item.href ? 'page' : undefined}
+        >
+          {item.label}
+        </a>
+      ))}
+    </nav>
+
+    <a class="site-header__phone" href="tel:+420566543435">
+      +420 566 543 435
+    </a>
+  </div>
+</header>

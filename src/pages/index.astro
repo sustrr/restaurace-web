@@ -1,36 +1,16 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
 import Events from "../components/Events.astro";
 import WeeklyMenu from "../components/menu/WeeklyMenu.astro";
 import Notices from "../components/notices/Notices.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
 	<body>
-		<BaseLayout title="Restaurace | Úvodní stránka">
-  	<main class="mx-auto max-w-6xl px-6 py-16">
-    <h1 class="text-4xl font-bold">
-      Restaurace
-    </h1>
-
-		<Notices />
-		<Events />
-
-		<WeeklyMenu />
-  </main>
-</BaseLayout>
+		<BaseLayout>
+			<Notices />
+			<Hero />
+			<WeeklyMenu />
+			<Events />
+		</BaseLayout>
 	</body>
-</html>
-
-
----
-
----

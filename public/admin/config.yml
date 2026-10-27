@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: TVUJ-UCET/restaurace-web
+  repo: sustrr/restaurace-web
   branch: main
 
 media_folder: public/images/events

@@ -12,8 +12,8 @@ const events = defineCollection({
     image: z.string().optional(),
     published: z.boolean().default(true),
 
-    visibleFrom: z.string().optional(),
-    visibleUntil: z.string().optional(),
+    visibleFrom: z.date().optional(),
+    visibleUntil: z.date().optional(),
   }),
 });
 

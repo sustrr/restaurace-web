@@ -1,0 +1,27 @@
+
+---
+import type { CollectionEntry } from 'astro:content';
+
+type Service = CollectionEntry<'services'>['data'];
+
+interface Props {
+  service: Service;
+}
+
+const { service } = Astro.props;
+---
+
+<article class="service-card">
+  {service.image && (
+    <img
+      src={service.image}
+      alt=""
+      loading="lazy"
+    />
+  )}
+
+  <div class="service-card-content">
+    <h2>{service.title}</h2>
+    <p>{service.description}</p>
+  </div>
+</article>

@@ -1,0 +1,40 @@
+
+---
+import type { CollectionEntry } from 'astro:content';
+
+type Notice = CollectionEntry<'notices'>['data'];
+
+interface Props {
+  notice: Notice;
+}
+
+const { notice } = Astro.props;
+
+const heading =
+  notice.type === 'closed'
+    ? 'Zavřeno'
+    : 'Uzavřená společnost';
+
+const formatDate = (date: string) =>
+  new Intl.DateTimeFormat('cs-CZ', {
+    day: 'numeric',
+    month: 'numeric',
+    year: 'numeric',
+    timeZone: 'UTC',
+  }).format(new Date(`${date}T12:00:00Z`));
+---
+
+<article class="notice-panel" data-type={notice.type}>
+  <h3>{heading}</h3>
+
+  <p class="notice-date">
+    {formatDate(notice.startDate)}
+    {notice.endDate &&
+      notice.endDate !== notice.startDate &&
+      ` – ${formatDate(notice.endDate)}`}
+  </p>
+
+  {notice.reason && (
+    <p class="notice-reason">{notice.reason}</p>
+  )}
+</article>

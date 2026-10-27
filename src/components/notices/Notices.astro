@@ -1,0 +1,43 @@
+
+---
+import { getCollection } from 'astro:content';
+import NoticePanel from './NoticePanel.astro';
+
+const notices = await getCollection(
+  'notices',
+  ({ data }) => data.published
+);
+---
+
+<div id="notices" class="notices">
+  {notices.map(({ data }) => (
+    <div
+      class="notice-item"
+      data-visible-from={data.visibleFrom ?? ''}
+      data-visible-until={data.visibleUntil ?? ''}
+      hidden
+    >
+      <NoticePanel notice={data} />
+    </div>
+  ))}
+</div>
+
+<script>
+  const today = new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Europe/Prague',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).format(new Date());
+
+  document.querySelectorAll<HTMLElement>('.notice-item').forEach((item) => {
+    const from = item.dataset.visibleFrom;
+    const until = item.dataset.visibleUntil;
+
+    const isVisible =
+      (!from || today >= from) &&
+      (!until || today <= until);
+
+    item.hidden = !isVisible;
+  });
+</script>

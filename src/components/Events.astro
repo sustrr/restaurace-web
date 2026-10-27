@@ -1,9 +1,10 @@
+
 ---
-import { getCollection } from "astro:content";
-import EventCard from "./EventCard.astro";
+import { getCollection } from 'astro:content';
+import EventCard from './EventCard.astro';
 
 const events = await getCollection(
-  "events",
+  'events',
   ({ data }) => data.published
 );
 
@@ -14,20 +15,47 @@ events.sort(
 );
 ---
 
-<section id="akce" class="mx-auto max-w-6xl px-6 py-16">
-  <h2 class="mb-8 text-3xl font-bold">
-    Aktuální akce
-  </h2>
+<section id="events" class="events" hidden>
+  <h2>Akce a speciální nabídky</h2>
 
-  {events.length > 0 ? (
-    <div class="grid gap-6 md:grid-cols-2">
-      {events.map((event) => (
+  <div class="events-list">
+    {events.map((event) => (
+      <div
+        class="event-item"
+        data-visible-from={event.data.visibleFrom?.toISOString().slice(0, 10) ?? ''}
+        data-visible-until={event.data.visibleUntil?.toISOString().slice(0, 10) ?? ''}
+        hidden
+      >
         <EventCard event={event} />
-      ))}
-    </div>
-  ) : (
-    <p class="text-gray-500">
-      Momentálně nepřipravujeme žádnou akci.
-    </p>
-  )}
+      </div>
+    ))}
+  </div>
 </section>
+
+<script>
+  const today = new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Europe/Prague',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).format(new Date());
+
+  document.querySelectorAll<HTMLElement>('.event-item').forEach((item) => {
+    const from = item.dataset.visibleFrom;
+    const until = item.dataset.visibleUntil;
+
+    const isVisible =
+      (!from || today >= from) &&
+      (!until || today <= until);
+
+    item.hidden = !isVisible;
+  });
+
+  const section = document.querySelector<HTMLElement>('#events');
+
+  if (section) {
+    section.hidden = !section.querySelector(
+      '.event-item:not([hidden])'
+    );
+  }
+</script>

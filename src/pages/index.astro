@@ -1,6 +1,8 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Events from "../components/Events.astro";
+import WeeklyMenu from "../components/menu/WeeklyMenu.astro";
+import Notices from "../components/notices/Notices.astro";
 ---
 
 <html lang="en">
@@ -18,12 +20,11 @@ import Events from "../components/Events.astro";
     <h1 class="text-4xl font-bold">
       Restaurace
     </h1>
-    <p class="mt-4 text-lg text-gray-600">
-      Nový web připravujeme.
-			Test of netlify build.
-    </p>
 
+		<Notices />
 		<Events />
+
+		<WeeklyMenu />
   </main>
 </BaseLayout>
 	</body>

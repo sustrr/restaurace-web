@@ -1,0 +1,46 @@
+
+---
+import type { CollectionEntry } from 'astro:content';
+
+type MenuDay = CollectionEntry<'weeklyMenu'>['data']['days'][number];
+
+interface Props {
+  day: MenuDay;
+}
+
+const { day } = Astro.props;
+
+const dayNames = {
+  monday: 'Pondělí',
+  tuesday: 'Úterý',
+  wednesday: 'Středa',
+  thursday: 'Čtvrtek',
+  friday: 'Pátek',
+};
+---
+
+<article class="menu-day">
+  <h3>{dayNames[day.day]}</h3>
+
+  {day.closed ? (
+    <p>Zavřeno</p>
+  ) : (
+    <>
+      {day.soup && (
+        <p class="menu-soup">{day.soup}</p>
+      )}
+
+      <ul class="menu-meals">
+        {day.meals.map((meal) => (
+          <li>
+            <span>{meal.name}</span>
+            <span>{meal.price} Kč</span>
+            {meal.allergens && (
+              <small>Alergeny: {meal.allergens}</small>
+            )}
+          </li>
+        ))}
+      </ul>
+    </>
+  )}
+</article>

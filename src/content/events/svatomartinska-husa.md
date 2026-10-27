@@ -1,6 +1,6 @@
 ---
-title: Svatomartinská husa 2026
-startDate: 2026-11-07
+title: Svatomartinská husa
+startDate: 2026-11-08
 endDate: 2026-11-11
 description: Přijďte ochutnat tradiční svatomartinské menu.
 image: ''

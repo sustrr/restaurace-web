@@ -37,10 +37,16 @@ const weeklyMenu = defineCollection({
           'friday',
         ]),
         closed: z.boolean().default(false),
-        soup: z.string().optional(),
+        soups: z.array(
+          z.object({
+            name: z.string(),
+            price:z.number().nonnegative(),
+          })
+        ).default([]),
         meals: z.array(
           z.object({
             name: z.string(),
+            description: z.string().optional(),
             price: z.number().nonnegative(),
             allergens: z.string().optional(),
           })
@@ -61,6 +67,8 @@ const notices = defineCollection({
     type: z.enum(['closed', 'private-event']),
     startDate: z.string(),
     endDate: z.string().optional(),
+    reopenDate: z.coerce.date().optional(),
+    reopenTime: z.string().optional(),
     reason: z.string().optional(),
     visibleFrom: z.coerce.date().optional(),
     visibleUntil: z.coerce.date().optional(),

@@ -1,6 +1,6 @@
 ---
 title: Svatomartinská husa
-description: Přijďte ochutnat svatomartinské speciality.
+description: Nejchutnější tradice sezony. Přijďte na svatomartinské hody – pomalu pečená husa, mladé víno a příjemné posezení u společného stolu.
 image: "/images/events/svatomartinska-husa.webp"
 startDate: 2026-11-11
 endDate: 2026-11-15

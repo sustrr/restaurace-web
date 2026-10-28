@@ -1,15 +1,148 @@
 
-<footer class="site-footer">
-  <div class="container">
-    <p>© {new Date().getFullYear()} Restaurace Křižanov</p>
+---
+import { getCollection } from 'astro:content';
+
+const notices = await getCollection(
+  'notices',
+  ({ data }) => data.published
+);
+
+
+const formatISO = (date?: Date | string) =>
+  date ? new Date(date).toISOString().slice(0, 10) : '';
+
+const formatDate = (date: Date | string) =>
+  new Intl.DateTimeFormat('cs-CZ', {
+    timeZone: 'UTC',
+    day: 'numeric',
+    month: 'long',
+  }).format(new Date(date));
+
+
+const formatRange = (
+  start: Date | string,
+  end?: Date | string
+) =>
+  end && formatISO(start) !== formatISO(end)
+    ? `${formatDate(start)} – ${formatDate(end)}`
+    : formatDate(start);
+
+---
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <a href="/" class="footer__brand" aria-label="Restaurace Křižanov – úvodní stránka">
+      <img
+        src="/images/logo-footer.svg"
+        alt="Restaurace Křižanov"
+        width="80"
+        height="80"
+        class="footer__logo"
+        loading="lazy"
+      />
+    </a>
+
+    <div class="footer__column">
+      <h2 class="footer__eyebrow">Najdete nás</h2>
+      <address class="footer__address">
+        Benešovo náměstí 449<br />
+        594 51 Křižanov
+      </address>
+      <a
+        class="footer__link footer__map-link"
+        href="https://www.google.com/maps/search/?api=1&query=Bene%C5%A1ovo+n%C3%A1m%C4%9Bst%C3%AD+449%2C+K%C5%99i%C5%BEanov"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Zobrazit na mapě
+      </a>
+    </div>
+
+    <div class="footer__column">
+      <h2 class="footer__eyebrow">Otevírací doba</h2>
+
+      <dl class="footer__hours">
+        <div><dt>Po–Čt</dt><dd>10:00–22:00</dd></div>
+        <div><dt>Pá–So</dt><dd>10:00–00:00</dd></div>
+        <div><dt>Ne</dt><dd>10:00–22:00</dd></div>
+      </dl>
+
+      <div class="footer__notices" hidden>
+        {notices.map((notice) => (
+          <p
+            class="footer__notice"
+            data-start={formatISO(notice.data.startDate)}
+            data-end={formatISO(notice.data.endDate ?? notice.data.startDate)}
+            data-visible-from={formatISO(notice.data.visibleFrom)}
+            data-visible-until={formatISO(notice.data.visibleUntil)}
+            hidden
+          >
+            <span class="footer__notice-label">
+              {notice.data.type === 'closed'
+                ? 'Zavřeno'
+                : 'Uzavřená společnost'}
+            </span>
+            <span>
+              {formatRange(notice.data.startDate, notice.data.endDate)}
+            </span>
+          </p>
+        ))}
+      </div>
+    </div>
+
+    <div class="footer__column">
+      <h2 class="footer__eyebrow">Kontakt</h2>
+      <a class="footer__link" href="tel:+420566543435">
+        +420 566 543 435
+      </a>
+      <a class="footer__link" href="mailto:info@restauracekrizanov.cz">
+        info@restauracekrizanov.cz
+      </a>
+    </div>
+  </div>
+
+  <div class="container footer__bottom">
+    <span>© {new Date().getFullYear()} Restaurace Křižanov</span>
+    <span>Všechny ceny zahrnují DPH</span>
   </div>
 </footer>
 
-<style>
-  .site-footer {
-    padding: 32px 0;
-    background: var(--color-deep-brown);
-    color: var(--color-white);
-    font-size: 13px;
-  }
-</style>
+<script>
+  const parts = new Intl.DateTimeFormat('en-GB', {
+    timeZone: 'Europe/Prague',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).formatToParts(new Date());
+
+  const part = (type: string) =>
+    parts.find((item) => item.type === type)?.value ?? '';
+
+  const today = [
+    part('year'),
+    part('month'),
+    part('day'),
+  ].join('-');
+
+  const notices = document.querySelectorAll<HTMLElement>('.footer__notice');
+  let visibleCount = 0;
+
+  notices.forEach((notice) => {
+    const start = notice.dataset.start ?? '';
+    const end = notice.dataset.end ?? '';
+    const from = notice.dataset.visibleFrom ?? '';
+    const until = notice.dataset.visibleUntil ?? '';
+
+    const isVisible =
+      (!from || today >= from) &&
+      (!until || today <= until) &&
+      (!end || today <= end);
+
+    notice.hidden = !isVisible;
+
+    if (isVisible) visibleCount++;
+  });
+
+  const container = document.querySelector<HTMLElement>('.footer__notices');
+  if (container) container.hidden = visibleCount === 0;
+</script>

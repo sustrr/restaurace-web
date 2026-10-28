@@ -1,20 +1,58 @@
-
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import MenuCategory from "../../components/MenuCategory.astro";
+import { getEntry } from "astro:content";
+import AllergenList from "../../components/AllergenList.astro";
+import MenuNavigation from "../../components/MenuNavigation.astro";
+
+const menu = await getEntry("foodMenu", "menu");
+
+const categories = (menu?.data.categories ?? []).filter(
+  (category) =>
+    category.published &&
+    category.items.some((item) => item.published)
+);
 ---
 
-<BaseLayout title="Jídelní lístek | Restaurace Křižanov">
-  <main class="page-placeholder">
-    <div class="container">
-      <p class="page-placeholder__eyebrow">Naše nabídka</p>
-      <h1>Jídelní lístek</h1>
-      <p class="page-placeholder__description">
-        Připravujeme pro vás kompletní nabídku našich jídel.
-        Již brzy ji najdete na této stránce.
-      </p>
-      <a href="/" class="page-placeholder__link">
-        Zpět na úvodní stránku
-      </a>
+<BaseLayout title="Jídelní lístek">
+  <main class="food-menu">
+    <div class="food-menu__container">
+      <header class="food-menu__header">
+        <h1>Jídelní lístek</h1>
+        <p>Vyberte si z naší nabídky jídel.</p>
+      </header>
+
+      {
+        categories.length > 0 ? (
+          <>
+            <MenuNavigation categories={categories} label="Kategorie jídel" />
+
+            <div class="food-menu__categories">
+              {categories.map((category) => (
+                <MenuCategory category={category} />
+              ))}
+            </div>
+          </>
+        ) : (
+          <p>Jídelní lístek právě připravujeme.</p>
+        )
+      }
+
+      {
+        (menu?.data.notes ?? []).length > 0 && (
+          <aside class="food-menu__notes" aria-label="Informace k jídelnímu lístku">
+            <h2>Informace k jídelnímu lístku</h2>
+
+            {menu!.data.notes.map((note) => (
+              <div class="food-menu__note">
+                <p>{note.text}</p>
+              </div>
+            ))}
+          </aside>
+        )
+      }
     </div>
+
+    <AllergenList />
   </main>
 </BaseLayout>

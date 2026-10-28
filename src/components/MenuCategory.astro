@@ -1,0 +1,67 @@
+---
+import MenuItem from "./MenuItem.astro";
+
+interface MenuItemData {
+  code?: string;
+  name: string;
+  description?: string;
+  portion?: string;
+  halfPortionAvailable?: boolean;
+  price: number;
+  allergens: number[];
+  published: boolean;
+}
+
+interface Props {
+  category: {
+    id: string;
+    title: string;
+    published: boolean;
+    items: MenuItemData[];
+  };
+}
+
+const { category } = Astro.props;
+
+const visibleItems = category.items.filter(
+  (item) => item.published
+);
+---
+
+{
+  category.published && visibleItems.length > 0 && (
+    <section class="menu-category" id={category.id}>
+      <h2>{category.title}</h2>
+
+      <div class="menu-category__items">
+        {visibleItems.map((item) => <MenuItem item={item} />)}
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .menu-category {
+    scroll-margin-top: 7rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .menu-category h2 {
+    font-family: var(--font-heading);
+    font-size: clamp(1.3rem, 2.5vw, 1.6rem);
+    font-weight: 500;
+    color: var(--color-deep-brown);
+    margin: 0 0 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--color-gold);
+  }
+
+  .menu-category__items {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .menu-category__items :global(.menu-item:last-child) {
+    border-bottom: none;
+  }
+</style>

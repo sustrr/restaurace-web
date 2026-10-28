@@ -1,0 +1,932 @@
+{
+  "categories": [
+    {
+      "id": "predkrmy",
+      "title": "Předkrmy",
+      "published": true,
+      "items": [
+        {
+          "code": "191",
+          "name": "Pečená řepa s fetou, balsamicem a sezamem, polníčkový salát",
+          "price": 90,
+          "allergens": [
+            7,
+            11
+          ],
+          "published": true,
+          "portion": "100g"
+        }
+      ]
+    },
+    {
+      "id": "polevky",
+      "title": "Polévky",
+      "published": true,
+      "items": [
+        {
+          "code": "101",
+          "name": "Hovězí vývar se zeleninou a nudlemi",
+          "price": 45,
+          "allergens": [
+            1,
+            3,
+            9
+          ],
+          "published": true,
+          "portion": "0,3 l"
+        },
+        {
+          "code": "102",
+          "name": "Česneková se sýrem a chlebovými krutony",
+          "price": 55,
+          "allergens": [
+            1,
+            3,
+            7,
+            9
+          ],
+          "published": true,
+          "portion": "0,3 l"
+        },
+        {
+          "code": "103",
+          "name": "Dršťková (dle denní nabídky do 16:00)",
+          "price": 55,
+          "allergens": [
+            1
+          ],
+          "published": true,
+          "portion": "0,3 l"
+        },
+        {
+          "code": "104",
+          "name": "Gulášová (dle denní nabídky do 16:00)",
+          "price": 55,
+          "allergens": [
+            1
+          ],
+          "published": true,
+          "portion": "0,3 l"
+        }
+      ]
+    },
+    {
+      "id": "hotova-jidla-podavame-do-16-00",
+      "title": "Hotová jídla – podáváme do 16:00",
+      "published": true,
+      "items": [
+        {
+          "code": "111",
+          "name": "Svíčková na smetaně, houskový knedlík (5ks)",
+          "price": 190,
+          "allergens": [
+            1,
+            3,
+            7,
+            9,
+            10
+          ],
+          "published": true,
+          "portion": "150g"
+        },
+        {
+          "code": "112",
+          "name": "Hovězí guláš, houskový knedlík (5ks)",
+          "price": 180,
+          "allergens": [
+            1,
+            3,
+            7
+          ],
+          "published": true,
+          "portion": "150g"
+        },
+        {
+          "code": "113",
+          "name": "Moravský vrabec, kysané zelí, bramborový knedlík (8ks)",
+          "price": 170,
+          "allergens": [
+            1,
+            3
+          ],
+          "published": true,
+          "portion": "150g"
+        },
+        {
+          "code": "114",
+          "name": "Uzená krkovice, vrabec, kysané zelí, 3ks houskový knedlík a 4 ks bramborový knedlík",
+          "price": 180,
+          "allergens": [
+            1,
+            3,
+            7
+          ],
+          "published": true,
+          "portion": "200g"
+        },
+        {
+          "code": "322",
+          "name": "houskový knedlík navíc",
+          "price": 6,
+          "allergens": [
+            1,
+            3,
+            7
+          ],
+          "published": true,
+          "portion": "1 ks"
+        }
+      ]
+    },
+    {
+      "id": "bezmasa-jidla",
+      "title": "Bezmasá jídla",
+      "published": true,
+      "items": [
+        {
+          "code": "161",
+          "name": "Smažený květák",
+          "price": 110,
+          "allergens": [
+            1,
+            3,
+            7
+          ],
+          "published": true,
+          "portion": "150g"
+        },
+        {
+          "code": "162",
+          "name": "Smažený sýr",
+          "price": 120,
+          "allergens": [
+            1,
+            3,
+            7
+          ],
+          "published": true,
+          "portion": "100g"
+        },
+        {
+          "code": "163",
+          "name": "Smažené žampiony",
+          "price": 120,
+          "allergens": [
+            1,
+            3,
+            7
+          ],
+          "published": true,
+          "portion": "120g"
+        },
+        {
+          "code": "164",
+          "name": "Krémová dýňová rýže s Grana Padano a batátovými chipsy",
+          "price": 180,
+          "allergens": [
+            7,
+            9
+          ],
+          "published": true,
+          "portion": "350g"
+        },
+        {
+          "code": "165",
+          "name": "Těstoviny se sušenými rajčátky, pestem a Grana Padano",
+          "price": 160,
+          "allergens": [
+            1,
+            3,
+            7,
+            8
+          ],
+          "published": true,
+          "portion": "200g"
+        }
+      ]
+    },
+    {
+      "id": "detska-jidla",
+      "title": "Dětská jídla",
+      "published": true,
+      "items": [
+        {
+          "code": "172",
+          "name": "Kuřecí prsíčka na másle",
+          "price": 110,
+          "allergens": [
+            7,
+            9
+          ],
+          "published": true,
+          "portion": "100g"
+        },
+        {
+          "code": "173",
+          "name": "Kuřecí řízek",
+          "price": 110,
+          "allergens": [
+            1,
+            3,
+            7
+          ],
+          "published": true,
+          "portion": "100g"
+        }
+      ]
+    },
+    {
+      "id": "ryby",
+      "title": "Ryby",
+      "published": true,
+      "items": [
+        {
+          "code": "175",
+          "name": "Losos s koprovým přelivem (cena nadváhy + 10g = 15 Kč)",
+          "price": 300,
+          "allergens": [
+            1,
+            4,
+            7
+          ],
+          "published": true,
+          "portion": "200g"
+        },
+        {
+          "code": "176",
+          "name": "Smažená tilápie v bylinkové strouhance",
+          "price": 190,
+          "allergens": [
+            1,
+            3,
+            4,
+            7
+          ],
+          "published": true,
+          "portion": "200g"
+        }
+      ]
+    },
+    {
+      "id": "drubezi-maso",
+      "title": "Drůbeží maso",
+      "published": true,
+      "items": [
+        {
+          "code": "201",
+          "name": "Přírodní kuřecí prsa",
+          "price": 180,
+          "allergens": [
+            7,
+            9
+          ],
+          "published": true,
+          "portion": "200g",
+          "halfPortionAvailable": true
+        },
+        {
+          "code": "202",
+          "name": "Kuřecí prsa, máslové žampiony s cuketou",
+          "price": 210,
+          "allergens": [
+            7,
+            9
+          ],
+          "published": true,
+          "portion": "200g"
+        },
+        {
+          "code": "203",
+          "name": "Kuřecí prsa s Nivou a smetanovou omáčkou",
+          "price": 210,
+          "allergens": [
+            7,
+            9
+          ],
+          "published": true,
+          "portion": "200g"
+        },
+        {
+          "code": "204",
+          "name": "Kuřecí prsa, hráškové pyré",
+          "price": 210,
+          "allergens": [
+            7
+          ],
+          "published": true,
+          "portion": "200g"
+        },
+        {
+          "code": "205",
+          "name": "Kuřecí nudličky na červeném kari se zeleninou a kokosovým mlékem",
+          "price": 210,
+          "allergens": [
+            7,
+            9
+          ],
+          "published": true,
+          "portion": "200g"
+        },
+        {
+          "code": "206",
+          "name": "Kuřecí stehenní roládka s masovou fáší a pistáciemi",
+          "price": 220,
+          "allergens": [
+            7,
+            8,
+            9,
+            10
+          ],
+          "published": true,
+          "portion": "200g"
+        },
+        {
+          "code": "207",
+          "name": "Smažené kuřecí stripsy, salát Coleslaw, pikantní dresing",
+          "price": 250,
+          "allergens": [
+            1,
+            7,
+            9,
+            10
+          ],
+          "published": true,
+          "portion": "150g"
+        },
+        {
+          "code": "208",
+          "name": "Kachní prsíčko, dýňové pyré, brusinkový dip",
+          "price": 270,
+          "allergens": [
+            9
+          ],
+          "published": true,
+          "portion": "200g"
+        },
+        {
+          "code": "209",
+          "name": "Smažená kuřecí kapsa se šunkou a sýrem",
+          "price": 210,
+          "allergens": [
+            1,
+            3,
+            7
+          ],
+          "published": true,
+          "portion": "200g"
+        },
+        {
+          "code": "210",
+          "name": "Smažená kuřecí prsa",
+          "price": 180,
+          "allergens": [
+            1,
+            3,
+            7
+          ],
+          "published": true,
+          "portion": "200g"
+        }
+      ]
+    },
+    {
+      "id": "veprove-maso",
+      "title": "Vepřové maso",
+      "published": true,
+      "items": [
+        {
+          "code": "221",
+          "name": "Vepřová pečeně, sázené vejce se slaninou",
+          "price": 210,
+          "allergens": [
+            3,
+            9
+          ],
+          "published": true,
+          "portion": "200g"
+        },
+        {
+          "code": "223",
+          "name": "Vepřová panenka s grilovanou zeleninou na tymiánu",
+          "price": 240,
+          "allergens": [
+            9
+          ],
+          "published": true,
+          "portion": "200g"
+        },
+        {
+          "code": "224",
+          "name": "Vepřová panenka na zeleném pepři se smetanou",
+          "price": 240,
+          "allergens": [
+            7,
+            9
+          ],
+          "published": true,
+          "portion": "200g"
+        },
+        {
+          "code": "225",
+          "name": "Krkovička v BBQ marinádě, pikantní zelenina s fazolemi a klobásou",
+          "price": 240,
+          "allergens": [
+            1,
+            9
+          ],
+          "published": true,
+          "portion": "250g"
+        },
+        {
+          "code": "226",
+          "name": "Krkovička se slaninovými chipsy a karamelizovanou cibulí",
+          "price": 230,
+          "allergens": [
+            7,
+            9
+          ],
+          "published": true,
+          "portion": "250g"
+        },
+        {
+          "code": "228",
+          "name": "Vepřové nudličky s lesními houbami a smetanou",
+          "price": 220,
+          "allergens": [
+            7,
+            9
+          ],
+          "published": true,
+          "portion": "200g"
+        },
+        {
+          "code": "229",
+          "name": "Smažený vepřový řízek",
+          "price": 180,
+          "allergens": [
+            1,
+            3,
+            7
+          ],
+          "published": true,
+          "portion": "200g"
+        },
+        {
+          "code": "230",
+          "name": "Smažená vepřová játra",
+          "price": 160,
+          "allergens": [
+            1,
+            3,
+            7
+          ],
+          "published": true,
+          "portion": "200g"
+        }
+      ]
+    },
+    {
+      "id": "zverinove-maso",
+      "title": "Zvěřinové maso",
+      "published": true,
+      "items": [
+        {
+          "code": "241",
+          "name": "Dančí hřbet s jalovcovokrémovou omáčkou",
+          "price": 330,
+          "allergens": [
+            7,
+            9
+          ],
+          "published": true,
+          "portion": "200g"
+        },
+        {
+          "code": "242",
+          "name": "Kančí panenka na barevném pepři",
+          "price": 330,
+          "allergens": [
+            9
+          ],
+          "published": true,
+          "portion": "200g"
+        },
+        {
+          "code": "243",
+          "name": "Kančí nudličky na víně s bramborovými noky",
+          "price": 350,
+          "allergens": [
+            1,
+            7,
+            9
+          ],
+          "published": true,
+          "portion": "200g"
+        }
+      ]
+    },
+    {
+      "id": "testoviny",
+      "title": "Těstoviny",
+      "published": true,
+      "items": [
+        {
+          "code": "261",
+          "name": "Tagliatelle s kuřecím masem na kari se smetanovou omáčkou sypané sýrem",
+          "price": 160,
+          "allergens": [
+            1,
+            3,
+            7
+          ],
+          "published": true,
+          "portion": "300g"
+        },
+        {
+          "code": "263",
+          "name": "Těstoviny s kuřecím masem, sušenými rajčátky, pestem a sýrem Grana Padano",
+          "price": 200,
+          "allergens": [
+            1,
+            3,
+            7,
+            8
+          ],
+          "published": true,
+          "portion": "300g"
+        }
+      ]
+    },
+    {
+      "id": "salaty",
+      "title": "Saláty",
+      "published": true,
+      "items": [
+        {
+          "code": "331",
+          "name": "Šopský salát",
+          "price": 90,
+          "allergens": [
+            7
+          ],
+          "published": true,
+          "portion": "200g"
+        },
+        {
+          "code": "332",
+          "name": "Řecký salát (okurka, paprika, rajče, olivy)",
+          "price": 90,
+          "allergens": [
+            10
+          ],
+          "published": true,
+          "portion": "200g"
+        },
+        {
+          "code": "333",
+          "name": "Polníčkový salát s balsamicem, olivovým olejem a batátovými chipsy sypaný Grana Padano",
+          "price": 100,
+          "allergens": [
+            7
+          ],
+          "published": true,
+          "portion": "100g"
+        },
+        {
+          "code": "335",
+          "name": "Zelný salát Coleslaw",
+          "price": 80,
+          "allergens": [
+            3,
+            7,
+            9
+          ],
+          "published": true,
+          "portion": "200g"
+        },
+        {
+          "code": "336",
+          "name": "Zeleninový salát s kuřecím masem (okurka, paprika, rajče, polníček, kuřecí maso)",
+          "price": 160,
+          "allergens": [
+            10
+          ],
+          "published": true,
+          "portion": "300g"
+        }
+      ]
+    },
+    {
+      "id": "k-pivu-a-vinu",
+      "title": "K pivu a vínu",
+      "published": true,
+      "items": [
+        {
+          "code": "141",
+          "name": "Ďábelská topinka s kuřecím masem, zeleninou a sýrem",
+          "price": 115,
+          "allergens": [
+            1,
+            3,
+            7
+          ],
+          "published": true,
+          "portion": "250g"
+        }
+      ]
+    },
+    {
+      "id": "prilohy",
+      "title": "Přílohy",
+      "published": true,
+      "items": [
+        {
+          "code": "301",
+          "name": "Hranolky",
+          "price": 50,
+          "allergens": [
+            1
+          ],
+          "published": true,
+          "portion": "200g"
+        },
+        {
+          "code": "302",
+          "name": "Americké brambory",
+          "price": 50,
+          "allergens": [
+            1
+          ],
+          "published": true,
+          "portion": "200g"
+        },
+        {
+          "code": "303",
+          "name": "Krokety",
+          "price": 60,
+          "allergens": [
+            1,
+            3
+          ],
+          "published": true,
+          "portion": "200g"
+        },
+        {
+          "code": "304",
+          "name": "Bramboráčky",
+          "price": 60,
+          "allergens": [
+            1,
+            3,
+            7
+          ],
+          "published": true,
+          "portion": "200g"
+        },
+        {
+          "code": "305",
+          "name": "Vařené brambory s máslem a bylinkami",
+          "price": 45,
+          "allergens": [
+            7
+          ],
+          "published": true,
+          "portion": "200g"
+        },
+        {
+          "code": "306",
+          "name": "Selské šťouchané brambory s cibulkou a česnekem",
+          "price": 50,
+          "allergens": [],
+          "published": true,
+          "portion": "200g"
+        },
+        {
+          "code": "307",
+          "name": "Bramborový salát",
+          "price": 50,
+          "allergens": [
+            3,
+            9,
+            10
+          ],
+          "published": true,
+          "portion": "200g"
+        },
+        {
+          "code": "308",
+          "name": "Dušená rýže",
+          "price": 45,
+          "allergens": [],
+          "published": true,
+          "portion": "200g"
+        },
+        {
+          "code": "309",
+          "name": "Bramborové noky",
+          "price": 60,
+          "allergens": [
+            1,
+            7,
+            9
+          ],
+          "published": true,
+          "portion": "200g"
+        },
+        {
+          "code": "310",
+          "name": "Grilovaná zelenina na tymiánu (cuketa,paprika,cibule,cherry rajčata,žampiony)",
+          "price": 70,
+          "allergens": [],
+          "published": true,
+          "portion": "200g"
+        },
+        {
+          "code": "311",
+          "name": "Kysané zelí",
+          "price": 45,
+          "allergens": [
+            1
+          ],
+          "published": true,
+          "portion": "200g"
+        },
+        {
+          "code": "312",
+          "name": "Houskový knedlík (5ks)",
+          "price": 30,
+          "allergens": [
+            1,
+            3,
+            7
+          ],
+          "published": true,
+          "portion": "180g"
+        },
+        {
+          "code": "313",
+          "name": "Bramborový knedlík (8ks)",
+          "price": 48,
+          "allergens": [
+            1,
+            3
+          ],
+          "published": true,
+          "portion": "200g"
+        },
+        {
+          "code": "314",
+          "name": "Sladkokyselá okurka",
+          "price": 15,
+          "allergens": [
+            10
+          ],
+          "published": true,
+          "portion": "50g"
+        },
+        {
+          "code": "315",
+          "name": "Bruschetta s česnekem a olivovým olejem",
+          "price": 30,
+          "allergens": [
+            1,
+            3,
+            7
+          ],
+          "published": true,
+          "portion": "100g"
+        },
+        {
+          "code": "316",
+          "name": "Rohlík",
+          "price": 6,
+          "allergens": [
+            1,
+            3
+          ],
+          "published": true,
+          "portion": "40g"
+        },
+        {
+          "code": "317",
+          "name": "Chléb",
+          "price": 8,
+          "allergens": [
+            1,
+            3
+          ],
+          "published": true,
+          "portion": "50g"
+        },
+        {
+          "code": "318",
+          "name": "Tatarka",
+          "price": 25,
+          "allergens": [
+            1,
+            3,
+            10
+          ],
+          "published": true,
+          "portion": "50g"
+        },
+        {
+          "code": "319",
+          "name": "Kečup",
+          "price": 25,
+          "allergens": [],
+          "published": true,
+          "portion": "50g"
+        },
+        {
+          "code": "320",
+          "name": "Pikantní dresing",
+          "price": 25,
+          "allergens": [
+            1,
+            3,
+            10
+          ],
+          "published": true,
+          "portion": "50g"
+        },
+        {
+          "code": "321",
+          "name": "Hořčice",
+          "price": 20,
+          "allergens": [
+            10
+          ],
+          "published": true,
+          "portion": "50g"
+        }
+      ]
+    },
+    {
+      "id": "moucniky-a-zmrzlina",
+      "title": "Moučníky a zmrzlina",
+      "published": true,
+      "items": [
+        {
+          "code": "351",
+          "name": "Vafle s borůvkami, šlehačkou a vanilkovou zmrzlinou",
+          "price": 95,
+          "allergens": [
+            1,
+            3,
+            7,
+            8
+          ],
+          "published": true,
+          "portion": "140g"
+        },
+        {
+          "code": "352",
+          "name": "Čokoládový fondant s lesní směsí a borůvkami",
+          "price": 90,
+          "allergens": [
+            1,
+            3,
+            7
+          ],
+          "published": true,
+          "portion": "110g"
+        },
+        {
+          "code": "353",
+          "name": "Zmrzlinový pohár s lesním ovocem, šlehačkou a mandlemi",
+          "price": 120,
+          "allergens": [
+            1,
+            7,
+            8
+          ],
+          "published": true,
+          "portion": "200g"
+        },
+        {
+          "code": "354",
+          "name": "Kopeček zmrzliny (vanilková, jahodová, ořechová)",
+          "price": 25,
+          "allergens": [
+            7,
+            8
+          ],
+          "published": true,
+          "portion": "30g"
+        }
+      ]
+    }
+  ],
+  "notes": [
+    {
+      "text": "* Poloviční porce: u polovičních porcí účtujeme 60 % ceny."
+    },
+    {
+      "text": "Váha masa je uvedena v syrovém stavu."
+    },
+    {
+      "text": "Čísla uvedená u jednotlivých jídel označují alergeny podle níže uvedeného seznamu. V případě potravinových alergií nebo intolerancí se, prosím, před objednáním obraťte na naši obsluhu, která vám poskytne bližší informace o složení pokrmů."
+    }
+  ]
+}

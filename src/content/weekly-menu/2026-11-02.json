@@ -1,89 +1,108 @@
-
 {
-  "title": "Polední menu 2.–6. listopadu 2026",
+  "title": "Polední menu 26.–30. října 2026",
   "weekStart": "2026-10-26",
   "published": true,
   "days": [
     {
       "day": "monday",
-      "closed": false,
+      "noLunchMenu": false,
       "soups": [
         {
-          "name":  "Hovězí vývar s nudlemi",
-          "price": 65
+          "name": "Vývar s masem a nudlemi"
         }
       ],
       "meals": [
         {
-          "name": "Svíčková na smetaně, houskový knedlík",
-          "description": "Jemná omáčka z kořenové zeleniny, plátek hovězího zadního a domácí houskové knedlíky",
-          "price": 169,
-          "allergens": "1, 7, 9"
+          "name": "Vepřové nudličky na divoko, hranolky",
+          "price": 165
         },
         {
-          "name": "Smažený sýr, hranolky, tatarská omáčka",
-          "description": "Jemná omáčka z kořenové zeleniny, plátek hovězího zadního a domácí houskové knedlíky",
-          "price": 155,
-          "allergens": "1, 3, 7"
+          "name": "Vepřové nudličky na divoko, rýže",
+          "price": 165
+        },
+        {
+          "name": "Přírodní kuřecí prsa se šunkou a sýrem, hranolky",
+          "price": 165
+        },
+        {
+          "name": "Přírodní kuřecí prsa se šunkou a sýrem, vařené brambory",
+          "price": 165
         }
       ]
     },
     {
       "day": "tuesday",
-      "closed": false,
+      "noLunchMenu": false,
       "soups": [
         {
-          "name":  "Česnečka se sýrem",
-          "price": 65
+          "name": "Z červené čočky"
         }
       ],
       "meals": [
         {
-          "name": "Vepřový řízek, bramborový salát",
+          "name": "Vrabec, špenát, bramborový knedlík",
+          "price": 165
+        },
+        {
+          "name": "Pečená sekaná, bramborová kaše",
           "price": 165
         }
       ]
     },
     {
       "day": "wednesday",
-      "closed": true,
+      "noLunchMenu": true,
+      "message": "Státní svátek – polední menu nepodáváme.",
+      "soups": [],
       "meals": []
     },
     {
       "day": "thursday",
-      "closed": false,
+      "noLunchMenu": false,
       "soups": [
         {
-          "name":  "Bramboračka",
-          "price": 65
+          "name": "Kmínová s vejci"
         }
       ],
       "meals": [
         {
-          "name": "Hovězí guláš, houskový knedlík",
-          "description": "Jemná omáčka z kořenové zeleniny, plátek hovězího zadního a domácí houskové knedlíky",
-          "price": 169
+          "name": "Vepřové rizoto se zeleninou sypané sýrem, zelný salát",
+          "price": 165
+        },
+        {
+          "name": "Bočkova zvěřinová směs, hranolky",
+          "price": 185
+        },
+        {
+          "name": "Bočkova zvěřinová směs, rýže",
+          "price": 185
         }
       ]
     },
     {
       "day": "friday",
-      "closed": false,
+      "noLunchMenu": false,
       "soups": [
         {
-          "name":  "Kulajda",
-          "price": 65
-        },
-        {
-          "name":  "Hovězí vývar s nudlemi",
-          "price": 65
+          "name": "Frankfurtská"
         }
       ],
       "meals": [
         {
-          "name": "Pečené kuře, bramborová kaše",
-          "description": "Jemná omáčka z kořenové zeleniny, plátek hovězího zadního a domácí houskové knedlíky",
-          "price": 159
+          "name": "Ďábelská kuřecí směs, hranolky",
+          "price": 165
+        },
+        {
+          "name": "Ďábelská kuřecí směs, rýže",
+          "price": 165
+        },
+        {
+          "name": "Smažené srnčí řízečky, bramborový salát",
+          "price": 185
+        },
+        {
+          "name": "Smažené srnčí řízečky, vařené brambory",
+          "price": 185
         }
       ]
     }

@@ -37,10 +37,11 @@ const weeklyMenu = defineCollection({
           'friday',
         ]),
         closed: z.boolean().default(false),
+        noLunchMenu: z.boolean().default(false),
+        message: z.string().optional(),
         soups: z.array(
           z.object({
             name: z.string(),
-            price:z.number().nonnegative(),
           })
         ).default([]),
         meals: z.array(
@@ -65,6 +66,7 @@ const notices = defineCollection({
   schema: z.object({
     title: z.string(),
     type: z.enum(['closed', 'private-event']),
+    allDay: z.boolean().default(true),
     startDate: z.string(),
     endDate: z.string().optional(),
     reopenDate: z.coerce.date().optional(),
@@ -93,9 +95,83 @@ const services = defineCollection({
 
 
 
+const foodMenu = defineCollection({
+  loader: glob({
+    pattern: '**/*.json',
+    base: './src/content/foodMenu',
+  }),
+  schema: z.object({
+    categories: z.array(
+      z.object({
+        id: z.string(),
+        title: z.string(),
+        published: z.boolean().default(true),
+        items: z.array(
+          z.object({
+            code: z.string().optional(),
+            name: z.string(),
+            description: z.string().optional(),
+            portion: z.string().optional(),
+            halfPortionAvailable: z.boolean().default(false),
+            price: z.number(),
+            allergens: z.array(z.number()).default([]),
+            published: z.boolean().default(true),
+          })
+        ),
+      })
+    ),
+    notes: z.array(
+      z.object({
+        text: z.string(),
+      })
+    ).default([]),
+  }),
+});
+
+const drinkMenu = defineCollection({
+  loader: glob({
+    pattern: "**/*.json",
+    base: "./src/content/drinkMenu",
+  }),
+  schema: z.object({
+    categories: z.array(
+      z.object({
+        id: z.string(),
+        title: z.string(),
+        published: z.boolean().default(true),
+        items: z.array(
+          z.object({
+            code: z.string().optional(),
+            name: z.string(),
+            description: z.string().optional(),
+            variants: z.array(
+              z.object({
+                volume: z.string().optional(),
+                price: z.number(),
+              }),
+            ).min(1),
+            allergens: z.array(z.number()).default([]),
+            published: z.boolean().default(true),
+          }),
+        ),
+      }),
+    ),
+    notes: z.array(
+      z.object({
+        title: z.string(),
+        text: z.string(),
+      }),
+    ).default([]),
+  }),
+});
+
+
+
 export const collections = {
   events,
   weeklyMenu,
   notices,
   services,
+  foodMenu,
+  drinkMenu
 };

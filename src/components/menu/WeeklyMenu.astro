@@ -1,5 +1,6 @@
 
 ---
+
 import { getCollection } from 'astro:content';
 import MenuDay from './MenuDay.astro';
 
@@ -8,11 +9,18 @@ const menus = await getCollection(
   ({ data }) => data.published
 );
 
-const menuData = menus.map(({ data }) => ({
-  title: data.title,
-  weekStart: data.weekStart,
-  days: data.days,
-}));
+const notices = await getCollection(
+  'notices',
+  ({ data }) => data.published && data.type === 'closed'
+);
+
+// Sjednocení dat na formát YYYY-MM-DD
+const formatISO = (date?: Date | string) => {
+  if (!date) return '';
+  return date instanceof Date
+    ? date.toISOString().slice(0, 10)
+    : String(date).slice(0, 10);
+};
 
 const weekdays = [
   { key: 'monday', label: 'Po' },
@@ -21,6 +29,50 @@ const weekdays = [
   { key: 'thursday', label: 'Čt' },
   { key: 'friday', label: 'Pá' },
 ];
+
+
+const menuData = menus.map(({ data }) => {
+  const monday = formatISO(data.weekStart);
+
+  return {
+    title: data.title,
+    weekStart: monday,
+
+    days: data.days.map((day) => {
+      const dayIndex = weekdays.findIndex(
+        ({ key }) => key === day.day
+      );
+
+      if (dayIndex === -1) {
+        throw new Error(`Neznámý den v poledním menu: ${day.day}`);
+      }
+
+      const date = new Date(`${monday}T12:00:00Z`);
+      date.setUTCDate(date.getUTCDate() + dayIndex);
+
+      const dayDate = date.toISOString().slice(0, 10);
+
+      const closure = notices.find(({ data: notice }) => {
+        if (!notice.allDay) return false;
+
+        const start = formatISO(notice.startDate);
+        const end = formatISO(
+          notice.endDate ?? notice.startDate
+        );
+
+        return dayDate >= start && dayDate <= end;
+      });
+
+      return {
+        ...day,
+        closureMessage: closure?.data.reason ?? '',
+        restaurantClosed: Boolean(closure),
+      };
+    }),
+  };
+});
+
+
 ---
 
 <section id="weekly-menu" class="weekly-menu">
@@ -88,14 +140,6 @@ const weekdays = [
 </section>
 
 <script>
-  const dayKeys = [
-    'monday',
-    'tuesday',
-    'wednesday',
-    'thursday',
-    'friday',
-  ];
-
   function getPragueDate() {
     const parts = new Intl.DateTimeFormat('en-GB', {
       timeZone: 'Europe/Prague',

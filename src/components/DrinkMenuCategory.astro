@@ -1,0 +1,68 @@
+
+---
+import DrinkMenuItem from "./DrinkMenuItem.astro";
+
+interface Drink {
+  code?: string;
+  name: string;
+  description?: string;
+  variants: {
+    volume?: string;
+    price: number;
+  }[];
+  allergens: number[];
+  published: boolean;
+}
+
+interface Category {
+  id: string;
+  title: string;
+  published: boolean;
+  items: Drink[];
+}
+
+interface Props {
+  category: Category;
+}
+
+const { category } = Astro.props;
+const items = category.items.filter((item) => item.published);
+---
+
+{category.published && items.length > 0 && (
+  <section class="drink-category" id={category.id}>
+    <h2>{category.title}</h2>
+
+    <div class="drink-category__items">
+      {items.map((item) => <DrinkMenuItem item={item} />)}
+    </div>
+  </section>
+)}
+
+<style>
+
+.drink-category {
+  scroll-margin-top: 7rem;
+  margin-bottom: 2.5rem;
+}
+
+.drink-category h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.3rem, 2.5vw, 1.6rem);
+  font-weight: 500;
+  color: var(--color-deep-brown);
+  margin: 0 0 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--color-gold);
+}
+
+.drink-category__items {
+  display: flex;
+  flex-direction: column;
+}
+
+.drink-category__items :global(.drink-item:last-child) {
+  border-bottom: none;
+}
+
+</style>

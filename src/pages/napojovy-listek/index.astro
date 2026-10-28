@@ -1,0 +1,75 @@
+
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import MenuNavigation from "../../components/MenuNavigation.astro";
+import DrinkMenuCategory from "../../components/DrinkMenuCategory.astro";
+import AllergenList from "../../components/AllergenList.astro";
+import { getEntry } from "astro:content";
+
+const menu = await getEntry("drinkMenu", "menu");
+
+const categories = (menu?.data.categories ?? []).filter(
+  (category) =>
+    category.published &&
+    category.items.some((item) => item.published),
+);
+
+const hasAllergens = categories.some((category) =>
+  category.items.some(
+    (item) => item.published && item.allergens.length > 0,
+  ),
+);
+---
+
+<BaseLayout title="Nápojový lístek">
+  <main class="drink-menu">
+    <div class="drink-menu__container">
+      <header class="drink-menu__header">
+        <h1>Nápojový lístek</h1>
+        <p>Vyberte si z naší nabídky nápojů.</p>
+      </header>
+
+      {
+        categories.length > 0 ? (
+          <>
+            <MenuNavigation
+              categories={categories}
+              label="Kategorie nápojů"
+            />
+
+            <div class="drink-menu__categories">
+              {categories.map((category) => (
+                <DrinkMenuCategory category={category} />
+              ))}
+            </div>
+          </>
+        ) : (
+          <p class="drink-menu__empty">
+            Nápojový lístek právě připravujeme.
+          </p>
+        )
+      }
+
+      {
+        (menu?.data.notes ?? []).length > 0 && (
+          <aside
+            class="drink-menu__notes"
+            aria-label="Informace k nápojovému lístku"
+          >
+            <h2>Informace k nápojovému lístku</h2>
+
+            {menu!.data.notes.map((note) => (
+              <div class="drink-menu__note">
+                <h3>{note.title}</h3>
+                <p>{note.text}</p>
+              </div>
+            ))}
+          </aside>
+        )
+      }
+    </div>
+
+    {hasAllergens && <AllergenList />}
+  </main>
+</BaseLayout>
+

@@ -148,7 +148,6 @@ collections:
               - { label: Cena v Kč, name: price, widget: number, value_type: int, min: 0 }
               - { label: Alergeny, name: allergens, widget: string, required: false }
 
-
   - name: notices
     label: Provozní oznámení
     label_singular: Oznámení
@@ -268,3 +267,198 @@ collections:
         name: published
         widget: boolean
         default: true
+
+  - name: foodMenu
+    label: "Jídelní lístek"
+    files:
+      - name: menu
+        label: "Jídelní lístek"
+        file: "src/content/foodMenu/menu.json"
+        format: json
+        fields:
+          - label: "Kategorie jídel"
+            name: categories
+            widget: list
+            collapsed: true
+            summary: "{{fields.title}}"
+            fields:
+              - label: "ID kategorie"
+                name: id
+                widget: string
+                hint: "Jedinečný identifikátor bez diakritiky, např. hlavni-jidla"
+
+              - label: "Název kategorie"
+                name: title
+                widget: string
+
+              - label: "Zobrazovat kategorii"
+                name: published
+                widget: boolean
+                default: true
+
+              - label: "Jídla"
+                name: items
+                widget: list
+                collapsed: true
+                summary: "{{fields.name}} — {{fields.price}} Kč"
+                fields:
+                  - label: "Kód položky"
+                    name: code
+                    widget: string
+                    required: false
+                    hint: "Interní číslo z původního jídelního lístku"
+
+                  - label: "Název jídla"
+                    name: name
+                    widget: string
+
+                  - label: "Popis"
+                    name: description
+                    widget: text
+                    required: false
+
+                  - label: "Gramáž"
+                    name: portion
+                    widget: string
+                    required: false
+                    hint: "Např. 150 g, 200 g nebo 1 ks"
+
+                  - label: "Možnost poloviční porce"
+                    name: halfPortionAvailable
+                    widget: boolean
+                    default: false
+
+                  - label: "Cena (Kč)"
+                    name: price
+                    widget: number
+                    value_type: int
+                    min: 0
+
+                  - label: "Alergeny"
+                    name: allergens
+                    widget: list
+                    required: false
+                    field:
+                      label: "Číslo alergenu"
+                      name: allergen
+                      widget: number
+                      value_type: int
+                      min: 1
+                      max: 14
+
+                  - label: "Zobrazovat jídlo"
+                    name: published
+                    widget: boolean
+                    default: true
+          - label: "Informace k jídelnímu lístku"
+            name: notes
+            widget: list
+            required: false
+            collapsed: true
+            summary: "{{fields.title}}"
+            fields:
+              - label: "Nadpis"
+                name: title
+                widget: string
+
+              - label: "Text"
+                name: text
+                widget: text
+  - name: drinkMenu
+    label: "Nápojový lístek"
+    files:
+      - name: menu
+        label: "Nápojový lístek"
+        file: "src/content/drinkMenu/menu.json"
+        format: json
+        fields:
+          - label: "Kategorie nápojů"
+            name: categories
+            widget: list
+            collapsed: true
+            summary: "{{fields.title}}"
+            fields:
+              - label: "ID kategorie"
+                name: id
+                widget: string
+                hint: "Např. cepovane-pivo, nealkoholicke-napoje"
+
+              - label: "Název kategorie"
+                name: title
+                widget: string
+
+              - label: "Zobrazovat kategorii"
+                name: published
+                widget: boolean
+                default: true
+
+              - label: "Nápoje"
+                name: items
+                widget: list
+                collapsed: true
+                summary: "{{fields.name}}"
+                fields:
+                  - label: "Kód položky"
+                    name: code
+                    widget: string
+                    required: false
+
+                  - label: "Název nápoje"
+                    name: name
+                    widget: string
+
+                  - label: "Popis"
+                    name: description
+                    widget: text
+                    required: false
+
+                  - label: "Varianty objemu a ceny"
+                    name: variants
+                    widget: list
+                    collapsed: true
+                    summary: "{{fields.volume}} — {{fields.price}} Kč"
+                    min: 1
+                    fields:
+                      - label: "Objem"
+                        name: volume
+                        widget: string
+                        required: false
+                        hint: "Např. 0,3 l, 0,5 l, 4 cl"
+
+                      - label: "Cena (Kč)"
+                        name: price
+                        widget: number
+                        value_type: int
+                        min: 0
+
+                  - label: "Alergeny"
+                    name: allergens
+                    widget: list
+                    required: false
+                    field:
+                      label: "Číslo alergenu"
+                      name: allergen
+                      widget: number
+                      value_type: int
+                      min: 1
+                      max: 14
+
+                  - label: "Zobrazovat nápoj"
+                    name: published
+                    widget: boolean
+                    default: true
+
+          - label: "Informace k nápojovému lístku"
+            name: notes
+            widget: list
+            required: false
+            collapsed: true
+            summary: "{{fields.title}}"
+            fields:
+              - label: "Nadpis"
+                name: title
+                widget: string
+
+              - label: "Text"
+                name: text
+                widget: text

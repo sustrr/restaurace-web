@@ -1,0 +1,131 @@
+---
+interface Props {
+  item: {
+    code?: string;
+    name: string;
+    description?: string;
+    portion?: string;
+    halfPortionAvailable?: boolean;
+    price: number;
+    allergens: number[];
+    published: boolean;
+  };
+}
+
+const { item } = Astro.props;
+---
+
+{
+  item.published && (
+    <div class="menu-item">
+      <div class="menu-item__content">
+        <div class="menu-item__heading">
+          {item.portion && (
+            <span class="menu-item__portion">{item.portion}</span>
+          )}
+
+          <h3>
+            {item.name}
+            {item.halfPortionAvailable && (
+              <span class="menu-item__asterisk" aria-label="Možnost poloviční porce">*</span>
+            )}
+          </h3>
+        </div>
+
+        {item.description && (
+          <p class="menu-item__description">{item.description}</p>
+        )}
+
+        {item.allergens.length > 0 && (
+          <p class="menu-item__allergens">
+            {item.allergens.join(", ")}
+          </p>
+        )}
+      </div>
+
+      <span class="menu-item__price">{item.price} Kč</span>
+    </div>
+  )
+}
+
+<style>
+  .menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid rgba(52, 38, 37, 0.12);
+  }
+
+  .menu-item__content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .menu-item__heading {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  align-items: baseline;
+  column-gap: 0.75rem;
+}
+
+.menu-item__heading h3 {
+  font-size: 1.2rem;
+  min-width: 0;
+  margin: 0;
+  overflow-wrap: break-word;
+}
+
+.menu-item__portion {
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .menu-item {
+    gap: 0.75rem;
+  }
+
+  .menu-item__heading {
+    column-gap: 0.5rem;
+  }
+}
+
+  .menu-item__description {
+    margin: 0.35rem 0 0;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--color-warm-grey);
+  }
+
+  .menu-item__allergens {
+    margin: 0.35rem 0 0;
+    font-size: 0.75rem;
+    color: var(--color-warm-grey);
+  }
+
+  .menu-item__price {
+    flex-shrink: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-deep-brown);
+    white-space: nowrap;
+  }
+
+  @media (max-width: 480px) {
+    .menu-item {
+      gap: 0.75rem;
+    }
+
+    .menu-item__price {
+      font-size: 0.9375rem;
+    }
+  }
+
+  .menu-item__asterisk {
+    color: var(--color-gold);
+    font-size: 1rem;
+    font-weight: 700;
+    margin-left: 0.2rem;
+  }
+</style>

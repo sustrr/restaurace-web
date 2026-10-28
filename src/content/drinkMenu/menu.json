@@ -1,0 +1,1138 @@
+{
+  "categories": [
+    {
+      "id": "kava",
+      "title": "Káva",
+      "published": true,
+      "items": [
+        {
+          "code": "61",
+          "name": "Káva turecká",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,17 l",
+              "price": 55
+            }
+          ],
+          "allergens": [],
+          "published": true
+        },
+        {
+          "code": "62",
+          "name": "Espresso",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,10 l",
+              "price": 55
+            }
+          ],
+          "allergens": [],
+          "published": true
+        },
+        {
+          "code": "65",
+          "name": "Cappuccino",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,15 l",
+              "price": 75
+            }
+          ],
+          "allergens": [
+            7
+          ],
+          "published": true
+        },
+        {
+          "code": "66",
+          "name": "Vídeňská káva",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,15 l",
+              "price": 75
+            }
+          ],
+          "allergens": [
+            7
+          ],
+          "published": true
+        },
+        {
+          "code": "67",
+          "name": "Latte Macchiato",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,15 l",
+              "price": 75
+            }
+          ],
+          "allergens": [
+            7
+          ],
+          "published": true
+        },
+        {
+          "code": "68",
+          "name": "Alžírská káva",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,15 l",
+              "price": 95
+            }
+          ],
+          "allergens": [
+            3,
+            7
+          ],
+          "published": true
+        },
+        {
+          "code": "81",
+          "name": "Ledová káva se zmrzlinou a šlehačkou",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,20 l",
+              "price": 100
+            }
+          ],
+          "allergens": [
+            7
+          ],
+          "published": true
+        },
+        {
+          "code": "69",
+          "name": "Smetana do kávy",
+          "description": "",
+          "variants": [
+            {
+              "volume": "5 g",
+              "price": 10
+            }
+          ],
+          "allergens": [
+            7
+          ],
+          "published": true
+        }
+      ]
+    },
+    {
+      "id": "teple-napoje",
+      "title": "Teplé nápoje",
+      "published": true,
+      "items": [
+        {
+          "code": "71",
+          "name": "Čaj černý",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,2 l",
+              "price": 40
+            }
+          ],
+          "allergens": [],
+          "published": true
+        },
+        {
+          "code": "72",
+          "name": "Čaj ovocný",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,2 l",
+              "price": 40
+            }
+          ],
+          "allergens": [],
+          "published": true
+        },
+        {
+          "code": "73",
+          "name": "Čaj zelený",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,2 l",
+              "price": 40
+            }
+          ],
+          "allergens": [],
+          "published": true
+        },
+        {
+          "code": "74",
+          "name": "Čaj mátový",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,2 l",
+              "price": 40
+            }
+          ],
+          "allergens": [],
+          "published": true
+        },
+        {
+          "code": "75",
+          "name": "Čaj heřmánkový",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,2 l",
+              "price": 40
+            }
+          ],
+          "allergens": [],
+          "published": true
+        },
+        {
+          "code": "76",
+          "name": "Grog – 4cl Božkov Tuzemský",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,2 l",
+              "price": 60
+            }
+          ],
+          "allergens": [],
+          "published": true
+        },
+        {
+          "code": "77",
+          "name": "Víno svařené",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,2 l",
+              "price": 70
+            }
+          ],
+          "allergens": [
+            12
+          ],
+          "published": true
+        },
+        {
+          "code": "79",
+          "name": "Horká čokoláda (bílá, tmavá)",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,2 l",
+              "price": 55
+            }
+          ],
+          "allergens": [
+            7
+          ],
+          "published": true
+        },
+        {
+          "code": "81",
+          "name": "Šlehačka na čokoládu",
+          "description": "",
+          "variants": [
+            {
+              "volume": "40 g",
+              "price": 25
+            }
+          ],
+          "allergens": [
+            7
+          ],
+          "published": true
+        },
+        {
+          "code": "83",
+          "name": "Med",
+          "description": "",
+          "variants": [
+            {
+              "volume": "15 g",
+              "price": 15
+            }
+          ],
+          "allergens": [],
+          "published": true
+        },
+        {
+          "code": "85",
+          "name": "Domácí punč s ovocem",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,2 l",
+              "price": 70
+            }
+          ],
+          "allergens": [
+            12
+          ],
+          "published": true
+        }
+      ]
+    },
+    {
+      "id": "pivo",
+      "title": "Pivo",
+      "published": true,
+      "items": [
+        {
+          "code": "1",
+          "name": "Starobrno  11°",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,5 l",
+              "price": 45
+            },
+            {
+              "volume": "0,3 l",
+              "price": 30
+            }
+          ],
+          "allergens": [
+            1
+          ],
+          "published": true
+        },
+        {
+          "code": "3",
+          "name": "Vildenberg 12°",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,5 l",
+              "price": 50
+            },
+            {
+              "volume": "0,3 l",
+              "price": 35
+            }
+          ],
+          "allergens": [
+            1
+          ],
+          "published": true
+        },
+        {
+          "code": "11",
+          "name": "Pilsner Urquell lahvové",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,5 l",
+              "price": 55
+            }
+          ],
+          "allergens": [
+            1
+          ],
+          "published": true
+        }
+      ]
+    },
+    {
+      "id": "aperitivy",
+      "title": "Aperitivy",
+      "published": true,
+      "items": [
+        {
+          "code": "370",
+          "name": "Metropol",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,1 l",
+              "price": 45
+            }
+          ],
+          "allergens": [],
+          "published": true
+        },
+        {
+          "code": "371",
+          "name": "Cinzano Bianco",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,1 l",
+              "price": 55
+            }
+          ],
+          "allergens": [],
+          "published": true
+        },
+        {
+          "code": "372",
+          "name": "Martini Dry",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,1 l",
+              "price": 65
+            }
+          ],
+          "allergens": [],
+          "published": true
+        }
+      ]
+    },
+    {
+      "id": "destilaty-a-likery",
+      "title": "Destiláty a likéry",
+      "published": true,
+      "items": [
+        {
+          "code": "401",
+          "name": "Božkov Tuzemský",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,04 l",
+              "price": 50
+            }
+          ],
+          "allergens": [],
+          "published": true
+        },
+        {
+          "code": "419",
+          "name": "Božkov Republica",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,04 l",
+              "price": 60
+            }
+          ],
+          "allergens": [],
+          "published": true
+        },
+        {
+          "code": "402",
+          "name": "Božkov vodka",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,04 l",
+              "price": 50
+            }
+          ],
+          "allergens": [],
+          "published": true
+        },
+        {
+          "code": "411",
+          "name": "Finlandia vodka",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,04 l",
+              "price": 60
+            }
+          ],
+          "allergens": [],
+          "published": true
+        },
+        {
+          "code": "404",
+          "name": "Fernet",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,04 l",
+              "price": 55
+            }
+          ],
+          "allergens": [],
+          "published": true
+        },
+        {
+          "code": "405",
+          "name": "Fernet Citrus",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,04 l",
+              "price": 55
+            }
+          ],
+          "allergens": [],
+          "published": true
+        },
+        {
+          "code": "420",
+          "name": "Magister Dark",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,04 l",
+              "price": 55
+            }
+          ],
+          "allergens": [],
+          "published": true
+        },
+        {
+          "code": "492",
+          "name": "Jegermeister",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,04 l",
+              "price": 60
+            }
+          ],
+          "allergens": [],
+          "published": true
+        },
+        {
+          "code": "510",
+          "name": "Havana Club",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,04 l",
+              "price": 60
+            }
+          ],
+          "allergens": [],
+          "published": true
+        },
+        {
+          "code": "412",
+          "name": "Gin Beefeater",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,04 l",
+              "price": 70
+            }
+          ],
+          "allergens": [],
+          "published": true
+        },
+        {
+          "code": "424",
+          "name": "Heffron rum",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,04 l",
+              "price": 70
+            }
+          ],
+          "allergens": [],
+          "published": true
+        },
+        {
+          "code": "406",
+          "name": "Becherovka / lemond",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,04 l",
+              "price": 55
+            }
+          ],
+          "allergens": [],
+          "published": true
+        },
+        {
+          "code": "512",
+          "name": "Tatratea",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,04 l",
+              "price": 75
+            }
+          ],
+          "allergens": [],
+          "published": true
+        },
+        {
+          "code": "413",
+          "name": "Tequila Black Death Silver / Gold",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,04 l",
+              "price": 75
+            }
+          ],
+          "allergens": [],
+          "published": true
+        },
+        {
+          "code": "415",
+          "name": "Metaxa  *****",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,04 l",
+              "price": 75
+            }
+          ],
+          "allergens": [],
+          "published": true
+        },
+        {
+          "code": "417",
+          "name": "Baileys",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,04 l",
+              "price": 70
+            }
+          ],
+          "allergens": [
+            7
+          ],
+          "published": true
+        },
+        {
+          "code": "418",
+          "name": "Vaječný likér",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,04 l",
+              "price": 40
+            }
+          ],
+          "allergens": [
+            3,
+            7
+          ],
+          "published": true
+        },
+        {
+          "code": "419",
+          "name": "Republica Božkov",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,04 l",
+              "price": 55
+            }
+          ],
+          "allergens": [],
+          "published": true
+        }
+      ]
+    },
+    {
+      "id": "whisky-a-bourbony",
+      "title": "Whisky a bourbony",
+      "published": true,
+      "items": [
+        {
+          "code": "437",
+          "name": "Ballantine's",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,04 l",
+              "price": 80
+            }
+          ],
+          "allergens": [],
+          "published": true
+        },
+        {
+          "code": "431",
+          "name": "Johnnie Walker",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,04 l",
+              "price": 80
+            }
+          ],
+          "allergens": [],
+          "published": true
+        },
+        {
+          "code": "432",
+          "name": "Jim Beam",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,04 l",
+              "price": 80
+            }
+          ],
+          "allergens": [],
+          "published": true
+        },
+        {
+          "code": "433",
+          "name": "Jameson",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,04 l",
+              "price": 85
+            }
+          ],
+          "allergens": [],
+          "published": true
+        },
+        {
+          "code": "434",
+          "name": "Four Roses",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,04 l",
+              "price": 80
+            }
+          ],
+          "allergens": [],
+          "published": true
+        },
+        {
+          "code": "435",
+          "name": "Tullamore Dew",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,04 l",
+              "price": 85
+            }
+          ],
+          "allergens": [],
+          "published": true
+        },
+        {
+          "code": "436",
+          "name": "Jack Daniels / Honey",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,04 l",
+              "price": 90
+            }
+          ],
+          "allergens": [],
+          "published": true
+        }
+      ]
+    },
+    {
+      "id": "nealkoholicke-napoje",
+      "title": "Nealkoholické nápoje",
+      "published": true,
+      "items": [
+        {
+          "code": "19",
+          "name": "Domácí bezová limonáda s ovocem",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,3 l",
+              "price": 42
+            }
+          ],
+          "allergens": [],
+          "published": true
+        },
+        {
+          "code": "17",
+          "name": "Domácí mátová limonáda s ovocem",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,3 l",
+              "price": 42
+            }
+          ],
+          "allergens": [],
+          "published": true
+        },
+        {
+          "code": "16",
+          "name": "Domácí rakytníková limonáda s ovocem",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,3 l",
+              "price": 60
+            }
+          ],
+          "allergens": [],
+          "published": true
+        },
+        {
+          "code": "23",
+          "name": "Kofola",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,3 l",
+              "price": 39
+            }
+          ],
+          "allergens": [],
+          "published": true
+        },
+        {
+          "code": "46",
+          "name": "Zon jablko",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,3 l",
+              "price": 39
+            }
+          ],
+          "allergens": [],
+          "published": true
+        },
+        {
+          "code": "50",
+          "name": "Voda s citronem",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,3 l",
+              "price": 15
+            }
+          ],
+          "allergens": [],
+          "published": true
+        },
+        {
+          "code": "27",
+          "name": "Natura neperlivá, jemně perlivá, perlivá",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,25 l",
+              "price": 40
+            }
+          ],
+          "allergens": [],
+          "published": true
+        },
+        {
+          "code": "29",
+          "name": "Coca Cola",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,33 l",
+              "price": 55
+            }
+          ],
+          "allergens": [],
+          "published": true
+        },
+        {
+          "code": "30",
+          "name": "Coca Cola – light",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,33 l",
+              "price": 55
+            }
+          ],
+          "allergens": [],
+          "published": true
+        },
+        {
+          "code": "31",
+          "name": "Fanta",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,33 l",
+              "price": 55
+            }
+          ],
+          "allergens": [],
+          "published": true
+        },
+        {
+          "code": "32",
+          "name": "Sprite",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,33 l",
+              "price": 55
+            }
+          ],
+          "allergens": [],
+          "published": true
+        },
+        {
+          "code": "33",
+          "name": "Tonic, Zázvorový tonic",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,25 l",
+              "price": 55
+            }
+          ],
+          "allergens": [],
+          "published": true
+        },
+        {
+          "code": "37",
+          "name": "Pomerančový džus",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,2 l",
+              "price": 30
+            }
+          ],
+          "allergens": [],
+          "published": true
+        },
+        {
+          "code": "45",
+          "name": "Juice Cappy",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,25 l",
+              "price": 60
+            }
+          ],
+          "allergens": [],
+          "published": true
+        },
+        {
+          "code": "12",
+          "name": "Pivo nealko Krušovice",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,5 l",
+              "price": 45
+            }
+          ],
+          "allergens": [
+            1
+          ],
+          "published": true
+        },
+        {
+          "code": "7",
+          "name": "Radler nealko",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,5l",
+              "price": 45
+            }
+          ],
+          "allergens": [
+            1
+          ],
+          "published": true
+        }
+      ]
+    },
+    {
+      "id": "rozlevana-vina",
+      "title": "Rozlévaná vína",
+      "published": true,
+      "items": [
+        {
+          "code": "451",
+          "name": "Merlot – červené, suché, z.p. Itálie",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,2 l",
+              "price": 60
+            }
+          ],
+          "allergens": [],
+          "published": true
+        },
+        {
+          "code": "452",
+          "name": "Rulandské šedé – bílé, polosuché, z.p. Morava",
+          "description": "",
+          "variants": [
+            {
+              "volume": "0,2 l",
+              "price": 60
+            }
+          ],
+          "allergens": [],
+          "published": true
+        }
+      ]
+    },
+    {
+      "id": "bila-vina-a-sekty",
+      "title": "Bílá vína a sekty",
+      "published": true,
+      "items": [
+        {
+          "code": "455",
+          "name": "Bohemia Sekt demi sec",
+          "description": "Proslulé šumivé víno, které si již více než půl století získává milovníky sektů svou harmonickou jemně polosuchou chutí a svěží středně plnou květnatou vůní. Pro jeho výrobu sekundárním kvašením metodou Charmat jsou vybírána vysoce kvalitní bílá vína a ta jsou do základního cuvée pečlivě sestavována podle originální receptury.",
+          "variants": [
+            {
+              "volume": "0,75l",
+              "price": 280
+            }
+          ],
+          "allergens": [],
+          "published": true
+        },
+        {
+          "code": "464",
+          "name": "Rulandské šedé, suché, moravské zemské víno",
+          "description": "Víno zlatožluté barvy a květinové vůně s ovocnými tóny v chuti připomíná pomeranč, oříšky a med. Zaujme plností, hebkostí a vysokým extraktem. Vhodně doplní kořenité pokrmy, rybí speciality i hutné polévky.",
+          "variants": [
+            {
+              "volume": "0,75l",
+              "price": 220
+            }
+          ],
+          "allergens": [],
+          "published": true
+        },
+        {
+          "code": "796",
+          "name": "Chardonnay, polosladké, moravské zemské víno",
+          "description": "Vyznačuje se vůní meruněk, medu a praženého sladu, typickou pro Chardonnay vypěstované v této oblasti. Chuť je plná, příjemně ovocná a osvěžující s pikantním závěrem. Tím se stává toto Chardonnay vhodným doplňkem pokrmů v gastronomii ale také ideálním společníkem pro delší ochutnávání.",
+          "variants": [
+            {
+              "volume": "0,75l",
+              "price": 220
+            }
+          ],
+          "allergens": [],
+          "published": true
+        },
+        {
+          "code": "457",
+          "name": "Müller Thurgau, suché, kabinetní",
+          "description": "Patří mezi nejrozšířenější odrůdy. Víno má světle žlutozelenou barvu s jemně muškátovou vůní. Chuť je lahodná, harmonická s nižším obsahem kyselin a alkoholem. Hodí se k telecímu masu, rybám a měkkým bílým sýrům.",
+          "variants": [
+            {
+              "volume": "0,75l",
+              "price": 240
+            }
+          ],
+          "allergens": [],
+          "published": true
+        },
+        {
+          "code": "794",
+          "name": "Sauvignon, suché, kabinetní",
+          "description": "Svěží letní víno, v chuti s elegantní kyselinkou, typická je ovocná chuť broskví, angreštu. Suchá vína Sauvignonu jsou vhodná ke studeným pokrmům. Hodí se i ke chřestu a kozím sýrům. Dále se hodí k bílým masům se smetanovými omáčkami, k rybám s výraznější úpravou či k rybám uzeným.",
+          "variants": [
+            {
+              "volume": "0,75l",
+              "price": 240
+            }
+          ],
+          "allergens": [],
+          "published": true
+        },
+        {
+          "code": "458",
+          "name": "Pálava, polosuché, výběr z hroznů",
+          "description": "Odrůda vyšlechtěná z odrůd Müller Thurgau a Tramín, velmi oblíbená aromatická odrůda většinou se zbytkovým cukrem, ve vůni ovocité a v chuti díky svěží kyselince krásně štavnaté. Podává se k silněji kořeněným jídlům, k paštikám, ke sladkým úpravám masa, k ovčím či kozím sýrům.",
+          "variants": [
+            {
+              "volume": "0,75l",
+              "price": 360
+            }
+          ],
+          "allergens": [],
+          "published": true
+        }
+      ]
+    },
+    {
+      "id": "rose-a-cervena-vina",
+      "title": "Rosé a červená vína",
+      "published": true,
+      "items": [
+        {
+          "code": "797",
+          "name": "Zweigeltrebe rosé, suché, kabinetní",
+          "description": "Krásná růžová barva připomínající maliny či třešně, intenzivnější ovocné aroma černého rybízu, malin a lesních jahod. Chuť je středně plná, svěží, šťavnatá, ovocného charakteru s překvapivě delší dochutí.",
+          "variants": [
+            {
+              "volume": "0,75l",
+              "price": 260
+            }
+          ],
+          "allergens": [],
+          "published": true
+        },
+        {
+          "code": "791",
+          "name": "Modrý Portugal, suché, kabinetní",
+          "description": "Klasická moravská modrá odrůda, jemné víno z ovocnými tóny do švestek či višní. Vína jsou většinou s nižším obsahem kyselin a tříslovin krásně harmonické a jsou vhodná k pití i jako mladá. Jsou vhodná ke zrajícím sýrům, k drůbežímu masu s hutnou úpravou i k těstovinám.",
+          "variants": [
+            {
+              "volume": "0,75l",
+              "price": 240
+            }
+          ],
+          "allergens": [],
+          "published": true
+        },
+        {
+          "code": "798",
+          "name": "Dornfelder, suché, pozdní sběr",
+          "description": "Plné a přitom jemné víno tmavě nachové barvy. Vůně vína je kořenitá s akcentem višní, chuť je pevná s výrazným ale jemným tříslem a dochutí čokolády. Je výbornou přílohou k hovězímu masu ale i těstovinám a sýrům s modrou plísní.",
+          "variants": [
+            {
+              "volume": "0,75l",
+              "price": 280
+            }
+          ],
+          "allergens": [],
+          "published": true
+        },
+        {
+          "code": "793",
+          "name": "Frankovka, suché, pozdní sběr",
+          "description": "Víno má rubínovou až purpurově červenou barvu s fialovými odlesky. Jeho vůně je výrazná a ovocná s kořenitým aroma. Objevují se tóny višní, červené papriky a peckovin. Chuť je teplá s kulatým tělem, jemnými kyselinami a nasládlou tříslovinou. Doporučujeme k tmavým masům, zvěřině a kořeněným jídlům.",
+          "variants": [
+            {
+              "volume": "0,75l",
+              "price": 280
+            }
+          ],
+          "allergens": [],
+          "published": true
+        }
+      ]
+    }
+  ],
+  "notes": [
+    {
+      "title": "Prodej alkoholu",
+      "text": "Alkoholické nápoje nepodáváme osobám mladším 18 let."
+    }
+  ]
+}

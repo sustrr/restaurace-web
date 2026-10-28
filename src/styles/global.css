@@ -487,6 +487,30 @@ a {
   font-style: italic;
 }
 
+.menu-day__status {
+  padding-block: 24px;
+}
+
+.menu-day__unavailable {
+  margin: 0;
+  color: var(--color-deep-brown);
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.menu-day__message {
+  margin: 12px 0 24px;
+  color: var(--color-warm-grey);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.menu-day__status .menu-day__message {
+  margin-bottom: 0;
+}
+
+
 @media (max-width: 900px) {
   .weekly-menu__layout {
     gap: 48px;

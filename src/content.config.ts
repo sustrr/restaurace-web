@@ -37,10 +37,11 @@ const weeklyMenu = defineCollection({
           'friday',
         ]),
         closed: z.boolean().default(false),
+        noLunchMenu: z.boolean().default(false),
+        message: z.string().optional(),
         soups: z.array(
           z.object({
             name: z.string(),
-            price:z.number().nonnegative(),
           })
         ).default([]),
         meals: z.array(
@@ -65,6 +66,7 @@ const notices = defineCollection({
   schema: z.object({
     title: z.string(),
     type: z.enum(['closed', 'private-event']),
+    allDay: z.boolean().default(true),
     startDate: z.string(),
     endDate: z.string().optional(),
     reopenDate: z.coerce.date().optional(),

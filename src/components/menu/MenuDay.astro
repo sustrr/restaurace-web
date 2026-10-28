@@ -2,31 +2,59 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 
-type MenuDay =
+type WeeklyMenuDay =
   CollectionEntry<'weeklyMenu'>['data']['days'][number];
+
+type MenuDay = WeeklyMenuDay & {
+  restaurantClosed?: boolean;
+  closureMessage?: string;
+};
 
 interface Props {
   day: MenuDay;
 }
 
 const { day } = Astro.props;
-
-const dayNames = {
-  monday: 'Pondělí',
-  tuesday: 'Úterý',
-  wednesday: 'Středa',
-  thursday: 'Čtvrtek',
-  friday: 'Pátek',
-};
 ---
 
 <article class="menu-day">
 
-  {day.closed ? (
-    <p class="menu-day__closed">Zavřeno</p>
+  {day.restaurantClosed ? (
+    <div class="menu-day__status">
+      <p class="menu-day__closed">
+        Restaurace je uzavřena
+      </p>
+
+      {day.closureMessage && (
+        <p class="menu-day__message">
+          {day.closureMessage}
+        </p>
+      )}
+    </div>
+
+  ) : day.noLunchMenu ? (
+    <div class="menu-day__status">
+      <p class="menu-day__unavailable">
+        Polední menu nepodáváme
+      </p>
+
+      {day.message && (
+        <p class="menu-day__message">
+          {day.message}
+        </p>
+      )}
+    </div>
+
   ) : (
     <>
-      <h5 class="menu-day__meal-eyebrow ">Polévky</h5>
+      {day.message && (
+        <p class="menu-day__message">
+          {day.message}
+        </p>
+      )}
+
+      <h5 class="menu-day__meal-eyebrow">Polévky</h5>
+
       <ul class="menu-day__meals">
         {day.soups.map((soup) => (
           <li class="menu-day__meal">
@@ -35,15 +63,12 @@ const dayNames = {
                 {soup.name}
               </span>
             </div>
-
-            <div class="menu-day__price">
-              {soup.price} Kč
-            </div>
           </li>
         ))}
       </ul>
 
-      <h5 class="menu-day__meal-eyebrow ">Hlavní chody</h5>
+      <h5 class="menu-day__meal-eyebrow">Hlavní chody</h5>
+
       <ul class="menu-day__meals">
         {day.meals.map((meal) => (
           <li class="menu-day__meal">
@@ -51,12 +76,17 @@ const dayNames = {
               <span class="menu-day__meal-name">
                 {meal.name}
               </span>
-              <p class="menu-day__meal-description">{meal.description}</p>
+
+              {meal.description && (
+                <p class="menu-day__meal-description">
+                  {meal.description}
+                </p>
+              )}
             </div>
 
             <div class="menu-day__allergens">
               {meal.allergens && (
-                  <span>{meal.allergens}</span>
+                <span>{meal.allergens}</span>
               )}
             </div>
 
@@ -68,4 +98,5 @@ const dayNames = {
       </ul>
     </>
   )}
+
 </article>

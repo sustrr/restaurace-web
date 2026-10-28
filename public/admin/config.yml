@@ -120,6 +120,16 @@ collections:
             widget: boolean
             default: false
 
+          - label: Polední menu se nepodává
+            name: noLunchMenu
+            widget: boolean
+            default: false
+
+          - label: Zpráva k polednímu menu
+            name: message
+            widget: string
+            required: false
+
           - label: Polévka
             name: soups
             widget: list
@@ -127,7 +137,6 @@ collections:
             summary: "{{fields.name}}"
             fields:
               - { label: Název polévky, name: name, widget: string }
-              - { label: Cena v Kč, name: price, widget: number, value_type: int, min: 0 }
 
           - label: Hlavní jídla
             name: meals
@@ -161,6 +170,11 @@ collections:
         options:
           - { label: Zavřeno, value: closed }
           - { label: Uzavřená společnost, value: private-event }
+
+      - label: Celodenní uzavření
+        name: allDay
+        widget: boolean
+        default: true
 
       - label: Datum začátku omezení
         name: startDate

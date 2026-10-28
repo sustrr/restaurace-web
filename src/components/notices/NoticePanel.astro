@@ -9,7 +9,18 @@ interface Props {
 const { notice } = Astro.props;
 
 const isClosed = notice.type === 'closed';
-const label = isClosed ? 'Zavřeno' : 'Uzavřená společnost';
+
+const reopenDate = notice.reopenDate
+  ? new Intl.DateTimeFormat('cs-CZ', {
+      timeZone: 'Europe/Prague',
+      weekday: 'long',
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+    }).format(notice.reopenDate)
+  : null;
+
+const hasReopening = Boolean(reopenDate || notice.reopenTime);
 ---
 
 <div
@@ -23,10 +34,28 @@ const label = isClosed ? 'Zavřeno' : 'Uzavřená společnost';
   role="status"
 >
   <div class="container notice-panel__inner">
-    <span class="notice-panel__label">{label}</span>
+    <div class="notice-panel__content">
+      <h2 class="notice-panel__title">{notice.title}</h2>
 
-    <span class="notice-panel__message">
-      {notice.reason || notice.title}
-    </span>
+      {notice.reason && (
+        <p class="notice-panel__message">{notice.reason}</p>
+      )}
+    </div>
+
+    {hasReopening && (
+      <div class="notice-panel__reopening">
+        <p class="notice-panel__eyebrow">Znovu otevíráme</p>
+
+        <p class="notice-panel__datetime">
+          {reopenDate && <span>{reopenDate}</span>}
+
+          {reopenDate && notice.reopenTime && (
+            <span class="notice-panel__separator" aria-hidden="true">•</span>
+          )}
+
+          {notice.reopenTime && <span>{notice.reopenTime}</span>}
+        </p>
+      </div>
+    )}
   </div>
 </div>

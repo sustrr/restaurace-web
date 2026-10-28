@@ -21,18 +21,29 @@ const dayNames = {
 ---
 
 <article class="menu-day">
-  <h4 class="menu-day__title">
-    {dayNames[day.day]}
-  </h4>
 
   {day.closed ? (
     <p class="menu-day__closed">Zavřeno</p>
   ) : (
     <>
-      {day.soup && (
-        <p class="menu-day__soup">{day.soup}</p>
-      )}
+      <h5 class="menu-day__meal-eyebrow ">Polévky</h5>
+      <ul class="menu-day__meals">
+        {day.soups.map((soup) => (
+          <li class="menu-day__meal">
+            <div class="menu-day__meal-info">
+              <span class="menu-day__meal-name">
+                {soup.name}
+              </span>
+            </div>
 
+            <div class="menu-day__price">
+              {soup.price} Kč
+            </div>
+          </li>
+        ))}
+      </ul>
+
+      <h5 class="menu-day__meal-eyebrow ">Hlavní chody</h5>
       <ul class="menu-day__meals">
         {day.meals.map((meal) => (
           <li class="menu-day__meal">
@@ -40,17 +51,18 @@ const dayNames = {
               <span class="menu-day__meal-name">
                 {meal.name}
               </span>
+              <p class="menu-day__meal-description">{meal.description}</p>
+            </div>
 
+            <div class="menu-day__allergens">
               {meal.allergens && (
-                <small class="menu-day__allergens">
-                  Alergeny: {meal.allergens}
-                </small>
+                  <span>{meal.allergens}</span>
               )}
             </div>
 
-            <span class="menu-day__price">
+            <div class="menu-day__price">
               {meal.price} Kč
-            </span>
+            </div>
           </li>
         ))}
       </ul>

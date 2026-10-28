@@ -121,9 +121,13 @@ collections:
             default: false
 
           - label: Polévka
-            name: soup
-            widget: string
+            name: soups
+            widget: list
             required: false
+            summary: "{{fields.name}}"
+            fields:
+              - { label: Název polévky, name: name, widget: string }
+              - { label: Cena v Kč, name: price, widget: number, value_type: int, min: 0 }
 
           - label: Hlavní jídla
             name: meals
@@ -172,6 +176,23 @@ collections:
         date_format: YYYY-MM-DD
         time_format: false
         format: YYYY-MM-DD
+
+      - label: Datum znovuotevření
+        name: reopenDate
+        widget: datetime
+        required: false
+        date_format: YYYY-MM-DD
+        time_format: false
+        format: YYYY-MM-DD
+
+      - label: Čas znovuotevření
+        name: reopenTime
+        widget: string
+        required: false
+        hint: "Například 11:00"
+        pattern:
+          - '^([01]\d|2[0-3]):[0-5]\d$'
+          - "Zadejte čas ve formátu HH:MM"
 
       - label: Důvod / doplňující informace
         name: reason

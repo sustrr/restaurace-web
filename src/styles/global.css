@@ -355,7 +355,7 @@ a {
   padding: 0 0 16px 0;
   font-size: 16px;
   line-height: 1.6;
-  border-bottom: 1px solid var(--color-gold);
+  border-bottom: 1px solid rgba(52, 38, 37, 0.2);
 }
 
 .menu-day__meals {
@@ -371,7 +371,7 @@ a {
   gap: 24px;
   padding: 8px 0 16px 0;
   margin-bottom: 10px;
-  border-bottom: 1px solid var(--color-gold);
+  border-bottom: 1px solid rgba(52, 38, 37, 0.2);
 }
 
 .menu-day__meal-info {

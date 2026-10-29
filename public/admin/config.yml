@@ -9,28 +9,46 @@ public_folder: /images/events
 locale: cs
 
 collections:
-  - name: events
-    label: Akce
-    label_singular: Akce
-    folder: src/content/events
+  - name: notices
+    label: Provozní oznámení
+    label_singular: Oznámení
+    folder: src/content/notices
     create: true
-    extension: md
-    format: frontmatter
+    extension: json
+    format: json
     slug: "{{slug}}"
+    identifier_field: title
 
     fields:
-      - label: Název akce
+      - label: Název
         name: title
         widget: string
 
-      - label: Začátek akce
+      - label: Důvod / doplňující informace
+        name: reason
+        widget: text
+        required: false
+
+      - label: Typ oznámení
+        name: type
+        widget: select
+        options:
+          - { label: Zavřeno, value: closed }
+          - { label: Uzavřená společnost, value: private-event }
+
+      - label: Celodenní uzavření
+        name: allDay
+        widget: boolean
+        default: true
+
+      - label: Datum začátku omezení
         name: startDate
         widget: datetime
         date_format: YYYY-MM-DD
         time_format: false
         format: YYYY-MM-DD
 
-      - label: Konec akce
+      - label: Datum konce omezení
         name: endDate
         widget: datetime
         required: false
@@ -38,19 +56,22 @@ collections:
         time_format: false
         format: YYYY-MM-DD
 
-      - label: Publikováno
-        name: published
-        widget: boolean
-        default: true
-
-      - label: Krátký popis
-        name: description
-        widget: text
-
-      - label: Podrobný text
-        name: body
-        widget: markdown
+      - label: Datum znovuotevření
+        name: reopenDate
+        widget: datetime
         required: false
+        date_format: YYYY-MM-DD
+        time_format: false
+        format: YYYY-MM-DD
+
+      - label: Čas znovuotevření
+        name: reopenTime
+        widget: string
+        required: false
+        hint: "Například 11:00"
+        pattern:
+          - '^([01]\d|2[0-3]):[0-5]\d$'
+          - "Zadejte čas ve formátu HH:MM"
 
       - label: Zobrazovat od
         name: visibleFrom
@@ -68,10 +89,69 @@ collections:
         time_format: false
         format: YYYY-MM-DD
 
+      - label: Publikováno
+        name: published
+        widget: boolean
+        default: false
+
+  - name: events
+    label: Akce a speciální nabídky
+    label_singular: Akce
+    folder: src/content/events
+    create: true
+    extension: md
+    format: frontmatter
+    slug: "{{slug}}"
+
+    fields:
+      - label: Název akce
+        name: title
+        widget: string
+
+      - label: Krátký popis
+        name: description
+        widget: text
+
       - label: Fotografie
         name: image
         widget: image
         required: false
+
+      - label: Začátek akce
+        name: startDate
+        widget: datetime
+        date_format: YYYY-MM-DD
+        time_format: false
+        format: YYYY-MM-DD
+
+      - label: Konec akce
+        name: endDate
+        widget: datetime
+        required: false
+        date_format: YYYY-MM-DD
+        time_format: false
+        format: YYYY-MM-DD
+
+      - label: Zobrazovat od
+        name: visibleFrom
+        widget: datetime
+        required: false
+        date_format: YYYY-MM-DD
+        time_format: false
+        format: YYYY-MM-DD
+
+      - label: Zobrazovat do
+        name: visibleUntil
+        widget: datetime
+        required: false
+        date_format: YYYY-MM-DD
+        time_format: false
+        format: YYYY-MM-DD
+
+      - label: Publikováno
+        name: published
+        widget: boolean
+        default: true
 
   - name: weekly-menu
     label: Polední menu
@@ -147,126 +227,6 @@ collections:
               - { label: Název jídla, name: name, widget: string }
               - { label: Cena v Kč, name: price, widget: number, value_type: int, min: 0 }
               - { label: Alergeny, name: allergens, widget: string, required: false }
-
-  - name: notices
-    label: Provozní oznámení
-    label_singular: Oznámení
-    folder: src/content/notices
-    create: true
-    extension: json
-    format: json
-    slug: "{{slug}}"
-    identifier_field: title
-
-    fields:
-      - label: Interní název
-        name: title
-        widget: string
-
-      - label: Typ oznámení
-        name: type
-        widget: select
-        options:
-          - { label: Zavřeno, value: closed }
-          - { label: Uzavřená společnost, value: private-event }
-
-      - label: Celodenní uzavření
-        name: allDay
-        widget: boolean
-        default: true
-
-      - label: Datum začátku omezení
-        name: startDate
-        widget: datetime
-        date_format: YYYY-MM-DD
-        time_format: false
-        format: YYYY-MM-DD
-
-      - label: Datum konce omezení
-        name: endDate
-        widget: datetime
-        required: false
-        date_format: YYYY-MM-DD
-        time_format: false
-        format: YYYY-MM-DD
-
-      - label: Datum znovuotevření
-        name: reopenDate
-        widget: datetime
-        required: false
-        date_format: YYYY-MM-DD
-        time_format: false
-        format: YYYY-MM-DD
-
-      - label: Čas znovuotevření
-        name: reopenTime
-        widget: string
-        required: false
-        hint: "Například 11:00"
-        pattern:
-          - '^([01]\d|2[0-3]):[0-5]\d$'
-          - "Zadejte čas ve formátu HH:MM"
-
-      - label: Důvod / doplňující informace
-        name: reason
-        widget: text
-        required: false
-
-      - label: Zobrazovat od
-        name: visibleFrom
-        widget: datetime
-        required: false
-        date_format: YYYY-MM-DD
-        time_format: false
-        format: YYYY-MM-DD
-
-      - label: Zobrazovat do
-        name: visibleUntil
-        widget: datetime
-        required: false
-        date_format: YYYY-MM-DD
-        time_format: false
-        format: YYYY-MM-DD
-
-      - label: Publikováno
-        name: published
-        widget: boolean
-        default: false
-
-  - name: services
-    label: Pořádané akce
-    label_singular: Typ akce
-    folder: src/content/services
-    create: true
-    extension: json
-    format: json
-    slug: "{{slug}}"
-    identifier_field: title
-
-    fields:
-      - label: Název
-        name: title
-        widget: string
-
-      - label: Popis
-        name: description
-        widget: text
-
-      - label: Fotografie
-        name: image
-        widget: image
-        required: false
-
-      - label: Pořadí
-        name: order
-        widget: number
-        value_type: int
-        default: 0
-
-      - label: Publikováno
-        name: published
-        widget: boolean
-        default: true
 
   - name: foodMenu
     label: "Jídelní lístek"
@@ -357,10 +317,6 @@ collections:
             collapsed: true
             summary: "{{fields.title}}"
             fields:
-              - label: "Nadpis"
-                name: title
-                widget: string
-
               - label: "Text"
                 name: text
                 widget: text

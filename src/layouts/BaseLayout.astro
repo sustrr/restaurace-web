@@ -1,10 +1,7 @@
-
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
-
-// Ponech zde své existující importy fontů.
 
 interface Props {
   title?: string;
@@ -13,7 +10,7 @@ interface Props {
 
 const {
   title = 'Restaurace Křižanov',
-  description = 'Poctivá kuchyně a příjemné posezení v Křižanově.',
+  description = 'Restaurace Křižanov – příjemné posezení, poctivá kuchyně, denní menu a prostor pro rodinné i firemní akce.',
 } = Astro.props;
 ---
 

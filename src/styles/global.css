@@ -4,9 +4,10 @@
   /* Colors */
   --color-deep-brown: #342625;
   --color-gold: #D6AD52;
+  --color-gold-text: #80621C;
   --color-cream-white: #F6F2E9;
   --color-white: #FFFCF5;
-  --color-warm-grey: #6C7267;
+  --color-warm-grey: #5B6258;
   --color-negative: #F2655B;
 
   /* Typography */
@@ -534,7 +535,7 @@ a {
 .events__eyebrow,
 .event-card__eyebrow {
   margin: 0 0 16px;
-  color: var(--color-gold);
+  color: var(--color-gold-text);
   font-size: 13px;
   font-weight: 500;
   letter-spacing: 0.12em;

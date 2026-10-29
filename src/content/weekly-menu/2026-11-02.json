@@ -5,7 +5,9 @@
   "days": [
     {
       "day": "monday",
+      "closed": false,
       "noLunchMenu": false,
+      "message": "",
       "soups": [
         {
           "name": "Vývar s masem a nudlemi"
@@ -14,25 +16,31 @@
       "meals": [
         {
           "name": "Vepřové nudličky na divoko, hranolky",
-          "price": 165
+          "price": 165,
+          "allergens": ""
         },
         {
           "name": "Vepřové nudličky na divoko, rýže",
-          "price": 165
+          "price": 165,
+          "allergens": ""
         },
         {
           "name": "Přírodní kuřecí prsa se šunkou a sýrem, hranolky",
-          "price": 165
+          "price": 165,
+          "allergens": ""
         },
         {
           "name": "Přírodní kuřecí prsa se šunkou a sýrem, vařené brambory",
-          "price": 165
+          "price": 165,
+          "allergens": ""
         }
       ]
     },
     {
       "day": "tuesday",
+      "closed": false,
       "noLunchMenu": false,
+      "message": "",
       "soups": [
         {
           "name": "Z červené čočky"
@@ -41,24 +49,29 @@
       "meals": [
         {
           "name": "Vrabec, špenát, bramborový knedlík",
-          "price": 165
+          "price": 165,
+          "allergens": ""
         },
         {
           "name": "Pečená sekaná, bramborová kaše",
-          "price": 165
+          "price": 165,
+          "allergens": ""
         }
       ]
     },
     {
       "day": "wednesday",
+      "closed": false,
       "noLunchMenu": true,
-      "message": "Státní svátek – polední menu nepodáváme.",
+      "message": "Státní svátek.",
       "soups": [],
       "meals": []
     },
     {
       "day": "thursday",
+      "closed": false,
       "noLunchMenu": false,
+      "message": "",
       "soups": [
         {
           "name": "Kmínová s vejci"
@@ -67,21 +80,26 @@
       "meals": [
         {
           "name": "Vepřové rizoto se zeleninou sypané sýrem, zelný salát",
-          "price": 165
+          "price": 165,
+          "allergens": ""
         },
         {
           "name": "Bočkova zvěřinová směs, hranolky",
-          "price": 185
+          "price": 185,
+          "allergens": ""
         },
         {
           "name": "Bočkova zvěřinová směs, rýže",
-          "price": 185
+          "price": 185,
+          "allergens": ""
         }
       ]
     },
     {
       "day": "friday",
+      "closed": false,
       "noLunchMenu": false,
+      "message": "",
       "soups": [
         {
           "name": "Frankfurtská"
@@ -90,19 +108,23 @@
       "meals": [
         {
           "name": "Ďábelská kuřecí směs, hranolky",
-          "price": 165
+          "price": 165,
+          "allergens": ""
         },
         {
           "name": "Ďábelská kuřecí směs, rýže",
-          "price": 165
+          "price": 165,
+          "allergens": ""
         },
         {
           "name": "Smažené srnčí řízečky, bramborový salát",
-          "price": 185
+          "price": 185,
+          "allergens": ""
         },
         {
           "name": "Smažené srnčí řízečky, vařené brambory",
-          "price": 185
+          "price": 185,
+          "allergens": ""
         }
       ]
     }

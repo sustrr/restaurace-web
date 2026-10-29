@@ -2,20 +2,29 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
+const optionalDate = () =>
+  z.preprocess(
+    (value) =>
+      value === '' || value === null ? undefined : value,
+    z.coerce.date().optional()
+  );
+
+
 const events = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/events' }),
   schema: z.object({
     title: z.string(),
     startDate: z.coerce.date(),
-    endDate: z.coerce.date().optional(),
+    endDate: optionalDate(),
     description: z.string(),
     image: z.string().optional(),
     published: z.boolean().default(true),
 
-    visibleFrom: z.date().optional(),
-    visibleUntil: z.date().optional(),
+    visibleFrom: optionalDate(),
+    visibleUntil: optionalDate(),
   }),
 });
+
 
 const weeklyMenu = defineCollection({
   loader: glob({
@@ -58,6 +67,7 @@ const weeklyMenu = defineCollection({
 });
 
 
+
 const notices = defineCollection({
   loader: glob({
     pattern: '**/*.json',
@@ -67,16 +77,22 @@ const notices = defineCollection({
     title: z.string(),
     type: z.enum(['closed', 'private-event']),
     allDay: z.boolean().default(true),
+
     startDate: z.string(),
     endDate: z.string().optional(),
-    reopenDate: z.coerce.date().optional(),
+
+    reopenDate: optionalDate(),
     reopenTime: z.string().optional(),
+
     reason: z.string().optional(),
-    visibleFrom: z.coerce.date().optional(),
-    visibleUntil: z.coerce.date().optional(),
+
+    visibleFrom: optionalDate(),
+    visibleUntil: optionalDate(),
+
     published: z.boolean().default(false),
   }),
 });
+
 
 
 const services = defineCollection({

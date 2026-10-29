@@ -682,8 +682,7 @@ a {
 
 .event-item:has(.event-item__featured:not([hidden]))
   + .event-item .event-item__compact {
-  margin-top: 32px;
-  border-top: 1px solid var(--color-gold);
+  margin-top: 24px;
 }
 
 
@@ -840,21 +839,16 @@ a {
 .footer__notices {
   display: grid;
   gap: 8px;
-  margin-top: 16px;
 }
 
 .footer__notice {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px 8px;
+  gap: 4px;
   margin: 0;
   color: var(--color-gold);
   font-size: 13px;
   line-height: 1.5;
-}
-
-.footer__notice-label {
-  font-weight: 500;
 }
 
 .footer__bottom {

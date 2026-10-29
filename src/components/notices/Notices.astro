@@ -3,58 +3,87 @@
 import { getCollection } from 'astro:content';
 import NoticePanel from './NoticePanel.astro';
 
-const notices = await getCollection(
-  'notices',
-  ({ data }) => data.published
+const notices = (
+  await getCollection('notices', ({ data }) => data.published)
+).sort((a, b) =>
+  a.data.startDate.localeCompare(b.data.startDate)
 );
----
 
+const formatISO = (value?: Date | string | null) => {
+  if (!value) return '';
+
+  if (typeof value === 'string') {
+    return value.slice(0, 10);
+  }
+
+  return new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Europe/Prague',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).format(value);
+};
+---
 
 {notices.map((notice) => (
   <div
     class="notice-item"
-
-    data-visible-from={notice.data.visibleFrom
-      ? new Date(notice.data.visibleFrom).toISOString().slice(0, 10)
-      : ''}
-    data-visible-until={notice.data.visibleUntil
-      ? new Date(notice.data.visibleUntil).toISOString().slice(0, 10)
-      : ''}
-
+    data-start={formatISO(notice.data.startDate)}
+    data-end={formatISO(
+      notice.data.endDate || notice.data.startDate
+    )}
+    data-all-day={String(notice.data.allDay)}
+    data-start-time={notice.data.startTime ?? ''}
+    data-end-time={notice.data.endTime ?? ''}
+    data-visible-from={formatISO(notice.data.visibleFrom)}
+    data-visible-until={formatISO(notice.data.visibleUntil)}
     hidden
   >
     <NoticePanel notice={notice.data} />
   </div>
 ))}
 
-
 <script>
+  const formatter = new Intl.DateTimeFormat('en-GB', {
+    timeZone: 'Europe/Prague',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    hourCycle: 'h23',
+  });
 
-const parts = new Intl.DateTimeFormat('en-GB', {
-  timeZone: 'Europe/Prague',
-  year: 'numeric',
-  month: '2-digit',
-  day: '2-digit',
-}).formatToParts(new Date());
+  const parts = formatter.formatToParts(new Date());
 
-const getPart = (type: string) =>
-  parts.find((part) => part.type === type)?.value ?? '';
+  const part = (type: string) =>
+    parts.find((item) => item.type === type)?.value ?? '';
 
-const today = [
-  getPart('year'),
-  getPart('month'),
-  getPart('day'),
-].join('-');
-
+  const today = `${part('year')}-${part('month')}-${part('day')}`;
+  const currentTime = `${part('hour')}:${part('minute')}`;
 
   document.querySelectorAll<HTMLElement>('.notice-item').forEach((item) => {
-    const from = item.dataset.visibleFrom;
-    const until = item.dataset.visibleUntil;
+    const end = item.dataset.end ?? '';
+    const from = item.dataset.visibleFrom ?? '';
+    const until = item.dataset.visibleUntil ?? '';
 
-    const isVisible =
+    const allDay = item.dataset.allDay !== 'false';
+    const endTime = item.dataset.endTime ?? '';
+
+    // Období publikování oznámení
+    const withinVisibility =
       (!from || today >= from) &&
       (!until || today <= until);
 
-    item.hidden = !isVisible;
+    // Oznámení po skončení akce automaticky zmizí
+    const notExpired =
+      !end ||
+      today < end ||
+      (
+        today === end &&
+        (allDay || !endTime || currentTime <= endTime)
+      );
+
+    item.hidden = !(withinVisibility && notExpired);
   });
 </script>

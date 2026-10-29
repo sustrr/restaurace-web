@@ -1,8 +1,11 @@
 {
   "title": "Soukromá oslava",
-  "reason": "V sobotu 7. listopadu bude restaurace od 17:00 vyhrazena pro soukromou společnost.",
+  "reason": "Restaurace bude od 17:00 vyhrazena pro soukromou společnost.",
   "type": "private-event",
   "allDay": false,
+  "startTime": "17:00",
+  "endTime": "",
+  "affectsOpeningHours": true,
   "startDate": "2026-11-07",
   "endDate": "2026-11-07",
   "reopenDate": "",

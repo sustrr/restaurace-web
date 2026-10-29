@@ -1,11 +1,13 @@
 {
   "title": "Zavřeno",
+  "reason": "V pátek 6. listopadu bude restaurace celý den zavřena z technických důvodů.",
   "type": "closed",
+  "allDay": true,
+  "affectsOpeningHours": true,
   "startDate": "2026-11-06",
   "endDate": "2026-11-06",
   "reopenDate": "2026-11-07",
   "reopenTime": "10:00",
-  "reason": "V pátek 6. listopadu bude restaurace celý den zavřena z technických důvodů.",
   "visibleFrom": "2026-10-27",
   "visibleUntil": "2026-11-06",
   "published": true

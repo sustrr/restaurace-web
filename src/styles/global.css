@@ -1002,13 +1002,14 @@ a {
     max-width: 800px;
     margin: 4rem auto 0;
     padding-top: 2rem;
+    font-size: 0.875rem;
     border-top: 1px solid rgba(52, 38, 37, 0.2);
   }
 
   .drink-menu__notes h2 {
     font-family: var(--font-heading);
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+    margin-bottom: 1.2rem;
   }
 
   .drink-menu__note + .drink-menu__note {
@@ -1068,13 +1069,14 @@ a {
     max-width: 800px;
     margin: 4rem auto 0;
     padding-top: 2rem;
+    font-size: 0.875rem;
     border-top: 1px solid rgba(52, 38, 37, 0.2);
   }
 
   .food-menu__notes h2 {
     font-family: var(--font-heading);
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+    margin-bottom: 1.2rem;
   }
 
   .food-menu__note + .food-menu__note {
@@ -1170,4 +1172,8 @@ a {
   .menu-navigation__arrow:disabled {
     visibility: hidden;
     cursor: default;
+  }
+
+  .nl-tab {
+    display: none !important;
   }

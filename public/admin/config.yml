@@ -34,12 +34,38 @@ collections:
         widget: select
         options:
           - { label: Zavřeno, value: closed }
-          - { label: Uzavřená společnost, value: private-event }
+          - { label: Akce, value: private-event }
+        hint: Zavřeno - dovolená, technické důvody, Akce - uzavřená společnost, neveřejný kvíz
 
-      - label: Celodenní uzavření
-        name: allDay
-        widget: boolean
+      - label: "Celodenní"
+        name: "allDay"
+        widget: "boolean"
         default: true
+
+      - label: "Čas od"
+        name: "startTime"
+        widget: "datetime"
+        date_format: false
+        time_format: "HH:mm"
+        format: "HH:mm"
+        required: false
+        hint: "Vyplňte pouze u oznámení, která neplatí celý den."
+
+      - label: "Čas do"
+        name: "endTime"
+        widget: "datetime"
+        date_format: false
+        time_format: "HH:mm"
+        format: "HH:mm"
+        required: false
+        hint: "Konec časového omezení."
+
+      - label: "Restaurace uzavřena pro veřejnost"
+        name: "affectsOpeningHours"
+        widget: "boolean"
+        default: false
+        required: false
+        hint: "Zapněte, pokud restaurace nebude přístupná běžným hostům. Informace se zobrazí také v patičce webu."
 
       - label: Datum začátku omezení
         name: startDate

@@ -68,25 +68,37 @@ const formatRange = (
       </dl>
 
       <div class="footer__notices" hidden>
-        {notices.map((notice) => (
-          <p
-            class="footer__notice"
-            data-start={formatISO(notice.data.startDate)}
-            data-end={formatISO(notice.data.endDate ?? notice.data.startDate)}
-            data-visible-from={formatISO(notice.data.visibleFrom)}
-            data-visible-until={formatISO(notice.data.visibleUntil)}
-            hidden
-          >
-            <span class="footer__notice-label">
-              {notice.data.type === 'closed'
-                ? 'Zavřeno'
-                : 'Uzavřená společnost'}
-            </span>
-            <span>
-              {formatRange(notice.data.startDate, notice.data.endDate)}
-            </span>
-          </p>
-        ))}
+        {notices
+          .filter((notice) => notice.data.affectsOpeningHours)
+          .sort((a, b) =>
+            a.data.startDate.localeCompare(b.data.startDate)
+          )
+          .map((notice) => (
+            <p
+              class="footer__notice"
+              data-start={formatISO(notice.data.startDate)}
+              data-end={formatISO(notice.data.endDate || notice.data.startDate)}
+              data-all-day={String(notice.data.allDay)}
+              data-start-time={notice.data.startTime ?? ''}
+              data-end-time={notice.data.endTime ?? ''}
+              data-visible-from={formatISO(notice.data.visibleFrom)}
+              data-visible-until={formatISO(notice.data.visibleUntil)}
+              hidden
+            >
+              <span class="footer__notice-label">Zavřeno</span>
+              <span>
+                {formatRange(notice.data.startDate, notice.data.endDate)}
+                {!notice.data.allDay && notice.data.startTime && (
+                  <>
+                    {' · '}
+                    {notice.data.endTime
+                      ? `${notice.data.startTime}–${notice.data.endTime}`
+                      : `od ${notice.data.startTime}`}
+                  </>
+                )}
+              </span>
+            </p>
+          ))}
       </div>
     </div>
 
@@ -107,36 +119,54 @@ const formatRange = (
   </div>
 </footer>
 
+
 <script>
-  const parts = new Intl.DateTimeFormat('en-GB', {
+  const now = new Date();
+
+  const formatter = new Intl.DateTimeFormat('en-GB', {
     timeZone: 'Europe/Prague',
     year: 'numeric',
     month: '2-digit',
     day: '2-digit',
-  }).formatToParts(new Date());
+    hour: '2-digit',
+    minute: '2-digit',
+    hourCycle: 'h23',
+  });
+
+  const parts = formatter.formatToParts(now);
 
   const part = (type: string) =>
     parts.find((item) => item.type === type)?.value ?? '';
 
-  const today = [
-    part('year'),
-    part('month'),
-    part('day'),
-  ].join('-');
+  const today = `${part('year')}-${part('month')}-${part('day')}`;
+  const currentTime = `${part('hour')}:${part('minute')}`;
 
   const notices = document.querySelectorAll<HTMLElement>('.footer__notice');
   let visibleCount = 0;
 
   notices.forEach((notice) => {
-    const start = notice.dataset.start ?? '';
     const end = notice.dataset.end ?? '';
     const from = notice.dataset.visibleFrom ?? '';
     const until = notice.dataset.visibleUntil ?? '';
 
-    const isVisible =
+    const allDay = notice.dataset.allDay !== 'false';
+    const endTime = notice.dataset.endTime ?? '';
+
+    // Období, ve kterém má být upozornění publikováno
+    const withinVisibility =
       (!from || today >= from) &&
-      (!until || today <= until) &&
-      (!end || today <= end);
+      (!until || today <= until);
+
+    // Uzavírka ještě neskončila
+    const notExpired =
+      !end ||
+      today < end ||
+      (
+        today === end &&
+        (allDay || !endTime || currentTime <= endTime)
+      );
+
+    const isVisible = withinVisibility && notExpired;
 
     notice.hidden = !isVisible;
 
@@ -144,5 +174,9 @@ const formatRange = (
   });
 
   const container = document.querySelector<HTMLElement>('.footer__notices');
-  if (container) container.hidden = visibleCount === 0;
+
+  if (container) {
+    container.hidden = visibleCount === 0;
+  }
 </script>
+

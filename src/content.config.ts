@@ -77,6 +77,9 @@ const notices = defineCollection({
     title: z.string(),
     type: z.enum(['closed', 'private-event']),
     allDay: z.boolean().default(true),
+    startTime: z.string().regex(/^([01]\d|2[0-3]):[0-5]\d$/).optional().or(z.literal('')),
+    endTime: z.string().regex(/^([01]\d|2[0-3]):[0-5]\d$/).optional().or(z.literal('')),
+    affectsOpeningHours: z.boolean().default(false),
 
     startDate: z.string(),
     endDate: z.string().optional(),

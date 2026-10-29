@@ -63,27 +63,18 @@ const dateLabel = !endDate
 
       <p class="event-card__description">{description}</p>
 
-      <a href="/rezervace/" class="event-card__button">
-        Rezervovat stůl
-      </a>
+      <p>Rezervace jsou možné telefonicky: <a href="tel:+420566543435">
+        +420 566 543 435
+      </a></p>
     </div>
   </article>
 ) : (
   <article class="event-card-compact">
-    <div class="event-card-compact__content">
-      <p class="event-card-compact__date">{dateLabel}</p>
+  <p class="event-card-compact__date">{dateLabel}</p>
 
-      <h3 class="event-card-compact__title">{title}</h3>
-
-      <p class="event-card-compact__description">{description}</p>
-    </div>
-
-    <a
-      href="/rezervace/"
-      class="event-card-compact__link"
-      aria-label={`Rezervovat stůl – ${title}`}
-    >
-      Rezervovat stůl
-    </a>
-  </article>
+  <div class="event-card-compact__content">
+    <h3 class="event-card-compact__title">{title}</h3>
+    <p class="event-card-compact__description">{description}</p>
+  </div>
+</article>
 )}

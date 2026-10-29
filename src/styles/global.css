@@ -535,11 +535,18 @@ a {
 .events__eyebrow,
 .event-card__eyebrow {
   margin: 0 0 16px;
-  color: var(--color-gold-text);
   font-size: 13px;
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+}
+
+.events__eyebrow {
+  color: var(--color-gold);
+}
+
+.event-card__eyebrow {
+  color: var(--color-gold-text);
 }
 
 .events__header h2 {

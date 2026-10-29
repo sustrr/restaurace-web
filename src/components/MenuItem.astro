@@ -65,7 +65,7 @@ const { item } = Astro.props;
 
   .menu-item__heading {
   display: grid;
-  grid-template-columns: max-content minmax(0, 1fr);
+  grid-template-columns: 40px minmax(0, 1fr);
   align-items: baseline;
   column-gap: 0.75rem;
 }
@@ -110,6 +110,7 @@ const { item } = Astro.props;
     font-weight: 600;
     color: var(--color-deep-brown);
     white-space: nowrap;
+    margin-top: .25rem;
   }
 
   @media (max-width: 480px) {

@@ -1,0 +1,244 @@
+
+---
+interface Props {
+  variant?: "light" | "dark";
+  label?: string;
+  description?: string;
+  phone?: string;
+  mobileLabel?: string;
+  class?: string;
+}
+
+const {
+  variant = "light",
+  label = "TELEFON",
+  description = "Rádi vám poradíme a přijmeme vaši rezervaci.",
+  phone = "+420 566 543 435",
+  mobileLabel = "Zavolejte nám",
+  class: className = "",
+} = Astro.props;
+
+const phoneHref = `tel:${phone.replace(/[^\d+]/g, "")}`;
+---
+
+<div
+  class:list={[
+    "phone-contact",
+    `phone-contact--${variant}`,
+    className,
+  ]}
+>
+  <!-- Desktop -->
+  <div class="phone-contact__desktop">
+    <div class="phone-contact__icon" aria-hidden="true">
+      <svg
+        width="26"
+        height="26"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path
+          d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 3.09 5.18 2 2 0 0 1 5.08 3h3a2 2 0 0 1 2 1.72c.12.96.34 1.9.66 2.79a2 2 0 0 1-.45 2.11L9.03 10.9a16 16 0 0 0 4.07 4.07l1.28-1.26a2 2 0 0 1 2.11-.45c.89.32 1.83.54 2.79.66A2 2 0 0 1 22 16.92Z"
+        />
+      </svg>
+    </div>
+
+    <div class="phone-contact__content">
+      <span class="phone-contact__label">{label}</span>
+
+      <span class="phone-contact__number">
+        {phone}
+      </span>
+
+      {description && (
+        <p class="phone-contact__description">{description}</p>
+      )}
+    </div>
+  </div>
+
+  <!-- Mobile -->
+  <a class="phone-contact__mobile" href={phoneHref}>
+    <span class="phone-contact__mobile-icon" aria-hidden="true">
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path
+          d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 3.09 5.18 2 2 0 0 1 5.08 3h3a2 2 0 0 1 2 1.72c.12.96.34 1.9.66 2.79a2 2 0 0 1-.45 2.11L9.03 10.9a16 16 0 0 0 4.07 4.07l1.28-1.26a2 2 0 0 1 2.11-.45c.89.32 1.83.54 2.79.66A2 2 0 0 1 22 16.92Z"
+        />
+      </svg>
+    </span>
+
+    <span class="phone-contact__mobile-label">
+      {mobileLabel}
+    </span>
+
+    <svg
+      class="phone-contact__arrow"
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1.8"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <path d="m9 18 6-6-6-6" />
+    </svg>
+  </a>
+</div>
+
+<style>
+  .phone-contact {
+    --phone-text: var(--color-deep-brown);
+    --phone-muted: var(--color-warm-grey);
+    --phone-icon-bg: #efe0c5;
+    --phone-icon-color: var(--color-deep-brown);
+    --phone-divider: rgba(52, 38, 37, 0.16);
+
+    width: fit-content;
+    max-width: 100%;
+  }
+
+  .phone-contact--dark {
+    --phone-text: var(--color-white);
+    --phone-muted: var(--color-cream-white);
+    --phone-icon-bg: var(--color-gold);
+    --phone-icon-color: var(--color-deep-brown);
+    --phone-divider: rgba(246, 242, 233, 0.35);
+  }
+
+  /* Desktop */
+
+  .phone-contact__desktop {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .phone-contact__icon {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: var(--phone-icon-bg);
+    color: var(--phone-icon-color);
+  }
+
+  .phone-contact__content {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    padding-left: 1.5rem;
+    border-left: 1px solid var(--phone-divider);
+  }
+
+  .phone-contact__label {
+    margin-bottom: 0.4rem;
+    color: var(--color-gold);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .phone-contact__number {
+    color: var(--phone-text);
+    font-family: "Lora", Georgia, serif;
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    font-weight: 500;
+    line-height: 1.25;
+    white-space: nowrap;
+  }
+
+  .phone-contact__description {
+    margin: 0.4rem 0 0;
+    color: var(--phone-muted);
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+
+  /* Mobile */
+
+  .phone-contact__mobile {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .phone-contact {
+      width: 100%;
+    }
+
+    .phone-contact__desktop {
+      display: none;
+    }
+
+    .phone-contact__mobile {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      width: 240px;
+      min-height: 60px;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      background: var(--color-gold);
+      color: var(--color-deep-brown);
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+    }
+
+    .phone-contact__mobile:hover {
+      background: #e3bc68;
+      transform: translateY(-1px);
+    }
+
+    .phone-contact__mobile:focus-visible {
+      outline: 3px solid var(--color-deep-brown);
+      outline-offset: 3px;
+    }
+
+    .phone-contact__mobile-icon {
+      display: flex;
+      flex: 0 0 auto;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .phone-contact__mobile-label {
+      flex: 1;
+    }
+
+    .phone-contact__arrow {
+      flex: 0 0 auto;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .phone-contact__mobile {
+      transition: none;
+    }
+  }
+</style>

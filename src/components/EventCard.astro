@@ -1,6 +1,7 @@
 
 ---
 import type { CollectionEntry } from 'astro:content';
+import PhoneContact from './PhoneContact.astro';
 
 interface Props {
   event: CollectionEntry<'events'>;
@@ -63,9 +64,10 @@ const dateLabel = !endDate
 
       <p class="event-card__description">{description}</p>
 
-      <p>Rezervace jsou možné telefonicky: <a href="tel:+420566543435">
-        +420 566 543 435
-      </a></p>
+      <PhoneContact
+  variant="light"
+  description="Rezervujte si místo"
+/>
     </div>
   </article>
 ) : (

@@ -9,6 +9,7 @@ interface Props {
 const { notice } = Astro.props;
 
 const isClosed = notice.type === 'closed';
+const isPrivateEvent = notice.type === 'private-event';
 
 const reopenDate = notice.reopenDate
   ? new Intl.DateTimeFormat('cs-CZ', {
@@ -28,7 +29,7 @@ const hasReopening = Boolean(reopenDate || notice.reopenTime);
     'notice-panel',
     {
       'notice-panel--closed': isClosed,
-      'notice-panel--private': !isClosed,
+      'notice-panel--private': isPrivateEvent,
     },
   ]}
   role="status"
@@ -59,3 +60,129 @@ const hasReopening = Boolean(reopenDate || notice.reopenTime);
     )}
   </div>
 </div>
+
+<style>
+  /* Base */
+
+  .notice-panel {
+    --notice-background: var(--color-negative);
+    --notice-text: var(--color-deep-brown);
+    --notice-muted: var(--color-deep-brown);
+    --notice-accent: var(--color-deep-brown);
+    --notice-divider: rgba(52, 38, 37, 0.25);
+
+    background: var(--notice-background);
+    color: var(--notice-text);
+  }
+
+  /* Variants */
+
+  .notice-panel--closed {
+    --notice-background: var(--color-negative);
+    --notice-text: var(--color-deep-brown);
+    --notice-muted: var(--color-deep-brown);
+    --notice-accent: var(--color-deep-brown);
+    --notice-divider: rgba(52, 38, 37, 0.25);
+  }
+
+  .notice-panel--private {
+    --notice-background: var(--color-deep-brown);
+    --notice-text: var(--color-white);
+    --notice-muted: var(--color-cream-white);
+    --notice-accent: var(--color-gold);
+    --notice-divider: rgba(246, 242, 233, 0.25);
+  }
+
+  /* Layout */
+
+  .notice-panel__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: clamp(32px, 6vw, 96px);
+    padding-block: 24px;
+  }
+
+  /* Main content */
+
+  .notice-panel__content {
+    min-width: 0;
+  }
+
+  .notice-panel__title {
+    margin: 0;
+    color: var(--notice-text);
+    font-family: var(--font-body);
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+
+  .notice-panel__message {
+    max-width: 620px;
+    margin: 4px 0 0;
+    color: var(--notice-muted);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* Reopening panel */
+
+  .notice-panel__reopening {
+    min-width: 0;
+    padding-left: 32px;
+    border-left: 1px solid var(--notice-divider);
+    text-align: right;
+  }
+
+  .notice-panel__eyebrow {
+    margin: 0 0 4px;
+    color: var(--notice-text);
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .notice-panel__datetime {
+    display: flex;
+    align-items: baseline;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 0;
+    color: var(--notice-accent);
+    font-family: var(--font-heading);
+    font-size: clamp(18px, 2.2vw, 24px);
+    font-weight: 400;
+    line-height: 1.15;
+  }
+
+  .notice-panel__separator {
+    font-family: var(--font-body);
+    font-size: 0.5em;
+  }
+
+  /* Mobile */
+
+  @media (max-width: 760px) {
+    .notice-panel__inner {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      padding-block: 28px;
+    }
+
+    .notice-panel__reopening {
+      padding: 20px 0 0;
+      border-left: 0;
+      border-top: 1px solid var(--notice-divider);
+      text-align: left;
+    }
+
+    .notice-panel__datetime {
+      justify-content: flex-start;
+      font-size: clamp(24px, 6vw, 32px);
+    }
+  }
+</style>

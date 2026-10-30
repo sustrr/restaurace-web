@@ -66,10 +66,10 @@ const services = [
           rádi vám pomůžeme připravit příjemné chvíle u dobrého jídla.
         </p>
         <p class="services-page__image-note">
-  Fotografie na této stránce jsou ilustrační vizualizace vytvořené
-  pomocí umělé inteligence a nezachycují skutečné prostory ani
-  realizované akce restaurace.
-</p>
+          Fotografie na této stránce jsou ilustrační vizualizace vytvořené
+          pomocí umělé inteligence a nezachycují skutečné prostory ani
+          realizované akce restaurace.
+        </p>
       </header>
 
       <div class="services-page__list">
@@ -198,12 +198,19 @@ const services = [
   .service__eyebrow,
   .services-cta__eyebrow {
     margin: 0 0 1rem;
-    color: var(--color-gold);
     font-size: 0.8rem;
     font-weight: 600;
     letter-spacing: 0.12em;
   }
 
+  .services-page__eyebrow,
+  .service__eyebrow {
+    color: var(--color-gold-text);
+  }
+
+  .services-cta__eyebrow {
+    color: var(--color-gold);
+  }
   .services-page__header h1 {
     margin: 0 0 1.5rem;
     font-family: var(--font-heading);

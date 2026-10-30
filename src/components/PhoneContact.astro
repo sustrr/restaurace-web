@@ -48,7 +48,13 @@ const phoneHref = `tel:${phone.replace(/[^\d+]/g, "")}`;
     </div>
 
     <div class="phone-contact__content">
-      <span class="phone-contact__label">{label}</span>
+      <span class:list={[
+        "phone-contact__label",
+        `phone-contact__label-color--${variant}`,
+        className,
+      ]}>
+        {label}
+      </span>
 
       <span class="phone-contact__number">
         {phone}
@@ -150,11 +156,18 @@ const phoneHref = `tel:${phone.replace(/[^\d+]/g, "")}`;
 
   .phone-contact__label {
     margin-bottom: 0.4rem;
-    color: var(--color-gold-text);
     font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.18em;
     text-transform: uppercase;
+  }
+
+  .phone-contact__label-color--dark {
+    color: var(--color-gold);
+  }
+
+  .phone-contact__label-color--light {
+    color: var(--color-gold-text);
   }
 
   .phone-contact__number {
